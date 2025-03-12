@@ -13,69 +13,48 @@ struct productos_t{
     int precio;
     date vencimiento;
 };
-void llenagondola(productos_t gondola[3][4]){
-    string nom;
-    productos_t product;
-    while(nom!="salir"){
-    cout<<"Ingresar o Salir"<<endl;
-    cin>>nom;
-    if(nom=="ingresar"){
-            string todo;
-            int todito;
-            int i=0;
-            cout<<"ingrese nombre"<<endl;
-            cin>>todo;
-            product.nombre=todo;
-            cout<<"ingrese codigo"<<endl;
-            cin>>todito;
-            product.codigo=todito;
-            cout<<"ingrese marca"<<endl;
-            cin>>todo;
-            cout<<"ingrese precio"<<endl;
-            cin>>todo;
-            product.precio=todito;
-            product.marca=todo;
-            cout<<"ingrese dia"<<endl;
-            cin>>todito;
-            product.vencimiento.dia=todito;
-            cout<<"ingrese anio"<<endl;
-            cin>>todito;
-            product.vencimiento.mes=todito;
-            cout<<"ingrese dia"<<endl;
-            cin>>todito;
-            product.vencimiento.anio=todito;
-            for(int i=0;i<3;i++){
-                for(int j=0;j<4;j++){
-                    gondola[i][j]=product;
-                }
-            }
 
-        }
-    
-    else if(nom=="salir"){
-        cout<<"usted salio"<<endl;
-    }
-    else{
-        cout<<"no esta esa opcion"<<endl;
-    }
-    }
-}
 int mayor(productos_t gondola[3][4]){
-    inbt max=0;
+    int max=0;
+    int aux=0;
+    int colum=0;
      for(int i=0;i<3;i++){
                 for(int j=0;j<4;j++){
-                    max=gondola[1][j].precio+gondola[2][j].precio+gondola[3][j].precio;
-                    if
+                    max=gondola[0][j].precio+gondola[1][j].precio+gondola[2][j].precio;
+                      if(max>aux){
+                        aux=max;
+                        colum=j+1;
 
 
+                    }
+                    
+                  
                 }
-            }
+   
 
 
 
-
+        }
+return colum;
 }
+void nom(productos_t gondola[3][4]){
 
+    cout<<gondola[2][3].nombre<<endl;
+    
+}
+int promedio(productos_t gondola[3][4]){
+    int prom=0;
+    for(int i=0; i<3; i++){
+        for (int j=0; j<4; j++){
+            prom=prom+gondola[i][j].precio;
+            
+        }
+
+
+    }
+    prom=prom/12;
+    return prom;
+}
    
 
 
@@ -83,7 +62,27 @@ int mayor(productos_t gondola[3][4]){
 
 
 int main(){
-    productos_t gondola[3][4];
-    llenagondola(gondola);
+    productos_t gondola[3][4]={
+        { 
+            {"Laptop", 123, "Alienware", 1500, {12, 3, 2025}},
+            {"Smartphone", 456, "Samsung", 800, {12, 3, 2025}},
+            {"Tablet", 789, "Apple", 1000, {12, 3, 2025}},
+            {"Auriculares", 101, "Sony", 120, {12, 3, 2025}}
+        },
+        { 
+            {"Reloj", 202, "Garmin", 250, {12, 3, 2025}},
+            {"Cámara", 303, "Canon", 600, {12, 3, 2025}},
+            {"Teclado", 404, "Corsair", 130, {12, 3, 2025}},
+            {"Ratón", 505, "Logitech", 90, {12, 3, 2025}}
+        },
+        { 
+            {"Monitor", 606, "Samsung", 350, {12, 3, 2025}},
+            {"Consola", 707, "PlayStation", 500, {12, 3, 2025}},
+            {"Altavoces", 808, "Bose", 200, {12, 3, 2025}},
+            {"TV", 909, "LG", 750, {12, 3, 2025}}
+        }
+    };
+   
     mayor(gondola);
+    cout<<mayor(gondola)<<endl;
 }
