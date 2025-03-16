@@ -39,7 +39,7 @@ return colum;
 }
 void nom(productos_t gondola[3][4]){
 
-    cout<<gondola[2][3].nombre<<endl;
+    cout<<gondola[1][2].nombre<<endl;
     
 }
 int promedio(productos_t gondola[3][4]){
@@ -55,6 +55,27 @@ int promedio(productos_t gondola[3][4]){
     prom=prom/12;
     return prom;
 }
+int venc(productos_t gondola[3][4]){
+    int contador=0;
+     for(int i=0;i<3;i++){
+                for(int j=0;j<4;j++){
+                    if(gondola[i][j].vencimiento.dia>0 or gondola[i][j].vencimiento.mes>0 or gondola[i][j].vencimiento.anio>0){
+                      
+                        contador=contador+1;
+                        
+
+
+                    }
+                    
+                  
+                }
+   
+
+
+
+        }
+return contador;
+}
    
 
 
@@ -64,25 +85,26 @@ int promedio(productos_t gondola[3][4]){
 int main(){
     productos_t gondola[3][4]={
         { 
-            {"Laptop", 123, "Alienware", 1500, {12, 3, 2025}},
-            {"Smartphone", 456, "Samsung", 800, {12, 3, 2025}},
-            {"Tablet", 789, "Apple", 1000, {12, 3, 2025}},
-            {"Auriculares", 101, "Sony", 120, {12, 3, 2025}}
+            {"Laptop", 123, "Alienware", 1500, {}},
+            {"salame", 456, "Samsung", 800, {12, 3, 2025}},
+            {"Tablet", 789, "Apple", 1000, {}},
+            {"Auriculares", 101, "Sony", 120, {}}
         },
         { 
-            {"Reloj", 202, "Garmin", 250, {12, 3, 2025}},
-            {"Cámara", 303, "Canon", 600, {12, 3, 2025}},
-            {"Teclado", 404, "Corsair", 130, {12, 3, 2025}},
-            {"Ratón", 505, "Logitech", 90, {12, 3, 2025}}
+            {"Reloj", 202, "Garmin", 250, {}},
+            {"Cámara", 303, "Canon", 600, {}},
+            {"Yogurt", 404, "Corsair", 130, {12, 3, 2025}},
+            {"queso", 505, "Logitech", 90, {12, 3, 2025}}
         },
         { 
-            {"Monitor", 606, "Samsung", 350, {12, 3, 2025}},
-            {"Consola", 707, "PlayStation", 500, {12, 3, 2025}},
-            {"Altavoces", 808, "Bose", 200, {12, 3, 2025}},
-            {"TV", 909, "LG", 750, {12, 3, 2025}}
+            {"Monitor", 606, "Samsung", 3500, {}},
+            {"Leche", 707, "PlayStation", 500, {12, 3, 2025}},
+            {"Altavoces", 808, "Bose", 200, {}},
+            {"TV", 909, "LG", 750, {}}
         }
     };
-   
-    mayor(gondola);
     cout<<mayor(gondola)<<endl;
+    nom(gondola);
+    cout<<promedio(gondola)<<endl;
+    cout<<venc(gondola)<<endl;
 }
