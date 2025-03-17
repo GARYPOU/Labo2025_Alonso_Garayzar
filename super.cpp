@@ -20,14 +20,14 @@ int mayor(productos_t gondola[3][4]){
     int colum=0;
      for(int i=0;i<4;i++){
                 for(int j=0;j<3;j++){
-                    max=gondola[0][i].precio+gondola[1][i].precio+gondola[2][i].precio;
+                    max=gondola[j][i].precio;
                       if(max>aux){
                         aux=max;
                         colum=j+1;
 
 
                     }
-                    
+                    max=0;
                   
                 }
    
