@@ -66,11 +66,12 @@ empleado_t empleado_con_mayor_sueldo(vector<empleado_t> empleados, vector<emplea
             vacio.push_back(empleados[i]);
         }
         if(empleados[i].salario<empleadito.salario){
-          
+        
             
         }
     }
      return empleadito;
+
 }
 
 void mostrar(int numero,vector<empleado_t> empleados, vector<empleado_t> vacio){
