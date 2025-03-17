@@ -58,17 +58,19 @@ void cargavector(vector<empleado_t> &empleado){
 }
 
 
-void empleado_con_mayor_sueldo(int &numero,vector<empleado_t> empleados, vector<empleado_t> &vacio){
+
+empleado_t empleado_con_mayor_sueldo(vector<empleado_t> empleados, vector<empleado_t> &vacio){
+    empleado_t empleadito=empleados[0];
     for(int i=0;i<empleados.size();i++){
-        if(empleados[i].salario<=400000){
+        if(empleados[i].salario<400000){
             vacio.push_back(empleados[i]);
         }
-        if(empleados[i].salario<empleados[i+1].salario){
-            numero=i;
+        if(empleados[i].salario<empleadito.salario){
+          
             
         }
     }
-   
+     return empleadito;
 }
 
 void mostrar(int numero,vector<empleado_t> empleados, vector<empleado_t> vacio){
