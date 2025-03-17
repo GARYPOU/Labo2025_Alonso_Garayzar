@@ -6,10 +6,10 @@ struct date{
     int mes;
     int anio;
 };
-struct pro_t{
+struct pro{
     string nom;
     int precio;
-}
+};
 struct pedido_t{
     int numero;
     string nombre;
@@ -18,106 +18,92 @@ struct pedido_t{
     string estado;
     date fecha;
 };
-void agregar(pro pedi[1][4], vector<pedido_t> &pedidos){
-    int num=1;
-    
+void agregar(int num, pro pedi[1][4], vector<pedido_t> &pedidos){
+
+    pedido_t pedidido;
     string product;
-    string canti;
-    pedido_t.numero=num;
+    int canti=0;
+    int cantid=0;
+    int preci=0;
+    int preciototal=0;
+
+    pedidido.numero=num;
     cout<<"Ingrese su nombre"<<endl;
-    cin>>pedido_t.nombre;
-          for(int z=0; z<2; z++){
-            cout<<gondola[z].nom;
+    cin>>pedidido.nombre;
+          for(int z=0; z<4; z++){
+            cout<<pedi[0][z].nom+' ';
         
     }
-    cout<<"ingrese el producto que quiera"<<endl;
+    cout<<' '<<endl;
+    cout<<"desea pedir un producto,sino, ingrese salir"<<endl;
     cin>>product;
-    if(product="Pollo"){
-        cout<<"ingrese cantidad"<<endl;
-        cin>>pedido_t.cant;
-        pre=cant*gondola[0].precio;
-        pedido_t.precio=pre;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.dia;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.mes;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.anio;
-
+    while(product!="salir"){
+    cout<<"ingrese el producto que quiera, cuando no quiera mas ingrese salir"<<endl;
+    cin>>product;
+        for(int i=0; i<4; i++){
+            if(product==pedi[0][i].nom){
+            cout<<"ingrese la cantidad que quiera"<<endl;
+            cin>>canti;
+            preci=pedi[0][i].precio*canti;
+            preciototal=preciototal+preci;
+            pedidido.precio=preciototal;
+            cantid=cantid+canti;
+            pedidido.cant=cantid;            
+            }
+        }
     }
-        if(product="salame"){
-        cout<<"ingrese cantidad"<<endl;
-        cin>>pedido_t.cant;
-        pre=cant*gondola[1].precio;
-        pedido_t.precio=pre;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.dia;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.mes;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.anio;
-
-    }
-        if(product="queso"){
-        cout<<"ingrese cantidad"<<endl;
-        cin>>pedido_t.cant;
-        pre=cant*gondola[2].precio;
-        pedido_t.precio=pre;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.dia;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.mes;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.anio;
-
-    }
-        if(product="Bife"){
-        cout<<"ingrese cantidad"<<endl;
-        cin>>pedido_t.cant;
-        pre=cant*gondola[3].precio;
-        pedido_t.precio=pre;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.dia;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.mes;
-        cout<<"ingrese dia"<<endl;
-        cin>>pedido_t.fecha.anio;
-
-    }
+    cout<<"ingrese dia del pedido"<<endl;
+    cin>>pedidido.fecha.dia;
+    cout<<"ingrese mes del pedido"<<endl;
+    cin>>pedidido.fecha.mes;
+    cout<<"ingrese anio del pedido"<<endl;
+    cin>>pedidido.fecha.anio;
     num=num+1;
-    pedido_t.estado="encurso"
+    pedidido.estado="encurso";
     
+
     
- 
-    pedidos.push_back(pedido_t);
+    pedidos.push_back(pedidido);
+  
 }
 
 void cancelar(vector <pedido_t> &pedidos){
-    for (int i=0; i<pedidos.size(); i++){
+    int num=0;
+  cout<<"ingrese numero de pedido"<<endl;
+    cin>>num;
+    for(int i=0; i<pedidos.size();i++){
+       if(pedidos[i].numero==num){
         pedidos[i].estado="cancelado";
-        
     }
 }
-
+}
 
 
 void mostrar(vector <pedido_t> pedidos){
     int total=0;
     for(int i=0; i<pedidos.size();i++){
-        if(pedidos[i].estado=="cancelado"){
-
-        }
-        else if(pedidos[i].estado=="completado"){
-            if(pedidos[i].fecha.dia=17 and pedidos[i].fecha.mes=2 and pedidos[i].fecha.anio=2025){
-            total=total+pedidos[i].precio;
-            cout<<total<<endl;
+        if(pedidos[i].estado=="completado"){
+            if(pedidos[i].fecha.dia==17 and pedidos[i].fecha.mes==03 and pedidos[i].fecha.anio==2025){
+                total=total+pedidos[i].precio;
+                cout<<total<<endl;
             }
         }
-        else{
-            cout<<pedidos[i].numero<<'-'<<pedidos[i].nombre<<'-'<<pedidos[i].precio<<'-'<<pedidos[i].estado<<'-'<<pedidos[i].fecha.dia<<'/'<<pedidos[i].fecha.mes<<'/'<<pedidos[i].fecha.anio;
-        }
+        else if(pedidos[i].estado=="encurso"){
+         cout<<pedidos[i].numero<<'-'<<pedidos[i].nombre<<'-'<<pedidos[i].precio<<'-'<<pedidos[i].estado<<'-'<<pedidos[i].fecha.dia<<'/'<<pedidos[i].fecha.mes<<'/'<<pedidos[i].fecha.anio<<endl;
         }
     }
+}
+
+void comp(vector <pedido_t> &pedidos){
+    int num;
+    cout<<"ingrese numero de pedido"<<endl;
+    cin>>num;
+    for(int i=0; i<pedidos.size();i++){
+       if(pedidos[i].numero==num){
+        pedidos[i].estado="completado";
+       }
+    }
+}
 
    
 
@@ -126,9 +112,10 @@ void mostrar(vector <pedido_t> pedidos){
 
 
 int main(){
-    int opcion=0;
+    int opcion=1;
+    int num=1;
     vector<pedido_t>pedidos;
-    pro_t pedi[1][4]={
+    pro pedi[1][4]={
         { 
             {"Pollo", 1300},
             {"salame", 456},
@@ -136,19 +123,29 @@ int main(){
             {"Bife", 1200}
         }
     };
-    cout<<"Desea pedir nuevamente=1"<<endl;
-    cout<<"Cancelar pedido=2"<<endl;
-    cout<<"mostrar pedido=3"<<endl;
-    cout<<"Salir=0"<<endl;
-    cin>>opcion;
-    if(opcion=1){
-        cout<<pedidos[i].numero<<pedidos[i].nombre
-    }
-    if(opcion=2){
-        cancelar(pedidos);
-    }
-    if(opcion=3){
-        mostrar(pedidos);
-    }
     
+    while (opcion)
+    {
+        cout<<"Desea pedir=1"<<endl;
+        cout<<"Cancelar pedido=2"<<endl;
+        cout<<"mostrar pedido=3"<<endl;
+        cout<<"se completo su pedido=4"<<endl;
+        cout<<"Salir=0"<<endl;
+        cin>>opcion;
+        if(opcion==1){
+            agregar(num, pedi, pedidos);
+        }
+        else if(opcion==2){
+            cancelar(pedidos);
+        }
+        else if(opcion==3){
+            mostrar(pedidos);
+        }
+        else if(opcion==4){
+            comp(pedidos);
+        }
+        else if(opcion==0){
+            opcion=false;
+        }
+    }
 }
