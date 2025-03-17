@@ -18,9 +18,9 @@ int mayor(productos_t gondola[3][4]){
     int max=0;
     int aux=0;
     int colum=0;
-     for(int i=0;i<3;i++){
-                for(int j=0;j<4;j++){
-                    max=gondola[0][j].precio+gondola[1][j].precio+gondola[2][j].precio;
+     for(int i=0;i<4;i++){
+                for(int j=0;j<3;j++){
+                    max=gondola[0][i].precio+gondola[1][i].precio+gondola[2][i].precio;
                       if(max>aux){
                         aux=max;
                         colum=j+1;
@@ -47,12 +47,13 @@ int promedio(productos_t gondola[3][4]){
     for(int i=0; i<3; i++){
         for (int j=0; j<4; j++){
             prom=prom+gondola[i][j].precio;
-            
+              int filas=i;
+                int colum=j;
         }
 
-
+  
     }
-    prom=prom/12;
+    prom=prom/(filas*colum);
     return prom;
 }
 int venc(productos_t gondola[3][4]){
