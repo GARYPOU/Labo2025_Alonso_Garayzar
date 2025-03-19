@@ -1,6 +1,6 @@
-using namespace std;
 #include <iostream>
 #include <vector>
+using namespace std;
 int num=0;
 struct date{
     int dia;
@@ -99,28 +99,26 @@ void agregarpedido(vector <producto> productos, vector <pedido_t> &pedidos){
 }
 
 void ordenarpormayor(vector <producto> productos){
-    int aux;
-    string  auxnom;
+    
+    producto aux = productos[0];
+   
     for(int i=0; i<productos.size();i++){
-        for(int j=0; j<productos.size()-i;j++){
-            if(productos[j].cantventa>productos[j+1].cantventa){
+        for(int j=0; j<productos.size()-i-1;j++){
+            if(productos[j].cantventa<productos[j+1].cantventa){
                 
-                aux=productos[j].cantventa;
-                auxnom=productos[j].nombre;
-                productos[j].cantventa=productos[j+1].cantventa;
-                productos[j].nombre=productos[j+1].nombre;
-                productos[j+1].cantventa=aux;
-                productos[j+1].nombre=auxnom;
-                 cout<<"hola2"<<endl;
+                aux=producto[j];
+                productos[j]=productos[j+1];
+                productos[j+1]=aux;
+           
                 
             }
-            cout<<"hola5"<<endl;
+         
         }
-     cout<<"hola4"<<endl;
+    
     }
-        cout<<"hola3"<<endl;
+       
     for(int z=0; z<productos.size();z++){
-        cout<<"hola"<<endl;
+       
         cout<<productos[z].nombre<<'-'<<productos[z].cantventa<<'-'<<endl;
     }
     
