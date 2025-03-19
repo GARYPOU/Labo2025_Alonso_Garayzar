@@ -1,10 +1,12 @@
 using namespace std;
 #include <iostream>
 #include <vector>
+int num=0;
 struct date{
     int dia;
     int mes;
     int anio;
+
 };
 struct producto{
     int numero;
@@ -27,25 +29,24 @@ int totalpromo(vector <producto> productos, int canti){
     int total=0;
     for(int i=0; i<productos.size(); i++){
         if(productos[i].promo==1){
-            total=(total+productos[i].precio*canti)*0.8;
+            total=(total+(productos[i].precio*canti))*0.8;
         }
     }
     return total;
 }
 void agregarpedido(vector <producto> productos, vector <pedido_t> &pedidos){
-    int num=1;
-    int numprodu;
+    producto produ;
     pedido_t pedidido;
     string product;
     int canti=0;
     int preci=0;
     int preciototal=0;
     int precipromo=0;
-
-    pedidido.numero=num;
+    int j=-1;
+    
+    
     cout<<"desea pedir un producto,sino, ingrese salir"<<endl;
     cin>>product;
-
     while(product!="salir"){
         for(int i=0; i<productos.size(); i++){
             cout<<"---------------------------------------------------------------------------------"<<endl;
@@ -54,24 +55,29 @@ void agregarpedido(vector <producto> productos, vector <pedido_t> &pedidos){
         
     cout<<"ingrese el nombre del producto que quiere, sino ingrese salir"<<endl;
     cin>>product;
+    j=j+1;
     for(int i=0; i<productos.size(); i++){
         if(product==productos[i].nombre){
             cout<<"ingrese la cantidad que quiera"<<endl;
             cin>>canti;
-            pedidido.cant.push_back(canti+' ');
-            if(productos[i].promo==1){
-                precipromo=totalpromo(productos, canti);
-            }
-        }
-        else{
-            preci=productos[i].precio*canti;
+            pedidido.cant.push_back(canti);
+                if(productos[i].promo==1){
+                    precipromo=totalpromo(productos, canti);
+                    
+                }
+                else if(productos[i].promo==0){
+                    preci=preci+(productos[i].precio*canti);
+                   
+                }
         }
     }
-    pedidido.produ.push_back(product+ ' ');
+   
+    pedidido.produ.push_back(product+' ');
+   
        
     
     }
-    
+    if(product=="salir"){
     preciototal=preci+precipromo;
     cout<<"Ingrese su nombre"<<endl;
     cin>>pedidido.nombre;
@@ -83,12 +89,13 @@ void agregarpedido(vector <producto> productos, vector <pedido_t> &pedidos){
     cout<<"ingrese anio del pedido"<<endl;
     cin>>pedidido.fecha.anio;
     num=num+1;
+    pedidido.numero=num;
 
     
 
     
     pedidos.push_back(pedidido);
-  
+    }
 }
 
 void ordenarpormayor(vector <producto> productos){
@@ -97,18 +104,23 @@ void ordenarpormayor(vector <producto> productos){
     for(int i=0; i<productos.size();i++){
         for(int j=0; j<productos.size()-i;j++){
             if(productos[j].cantventa>productos[j+1].cantventa){
+                
                 aux=productos[j].cantventa;
                 auxnom=productos[j].nombre;
                 productos[j].cantventa=productos[j+1].cantventa;
                 productos[j].nombre=productos[j+1].nombre;
                 productos[j+1].cantventa=aux;
                 productos[j+1].nombre=auxnom;
-                
+                 cout<<"hola2"<<endl;
                 
             }
-     }
+            cout<<"hola5"<<endl;
+        }
+     cout<<"hola4"<<endl;
     }
+        cout<<"hola3"<<endl;
     for(int z=0; z<productos.size();z++){
+        cout<<"hola"<<endl;
         cout<<productos[z].nombre<<'-'<<productos[z].cantventa<<'-'<<endl;
     }
     
@@ -170,7 +182,7 @@ int main(){
     };
    
     
-    while (opcion)
+    while (opcion!=0)
     {
         cout<<"Desea pedir=1"<<endl;
         cout<<"mostrar pedido=2"<<endl;
