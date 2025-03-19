@@ -43,13 +43,17 @@ void cargarpasciente(vector <pasciente> &listado){
 
 void cancelarpasciente(vector <pasciente> &listado){
     int histcli;
+    int pos=0;
     cout<<"ingrese el numero de historia clinica a cancelar"<<endl;
     cin>>histcli;
     for(int i=0;i<listado.size();i++){
         if(listado[i].histcli==histcli){
-            listado.erase(listado.begin()+i);
+            pos=i;
+      
         }
     }
+        listado.erase(listado.begin()pos);
+    
 }
 int citaspordia(vector <pasciente> listado){
     int day;
