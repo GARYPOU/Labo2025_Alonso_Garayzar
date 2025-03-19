@@ -69,6 +69,7 @@ int citaspordia(vector <pasciente> listado){
 
     for(int i=0;i<listado.size();i++){
         if(listado[i].fecha.dia==day and listado[i].fecha.mes==month and listado[i].fecha.anio==year){
+            cout<<listado[i].fecha.dia<<"/"<<listado[i].fecha.mes<<"/"<<listado[i].fecha.anio<<endl;
             contador=contador+1;
         }
     }
