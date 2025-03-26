@@ -4,13 +4,13 @@ using namespace std;
 struct date{
     int dia;
     int mes;
-    int año;
+    int anio;
 };
 struct jugador{
   int numero;
   string nombre;
-  int goles;
-    string posicion;
+  string posicion;
+ 
    
 };
 struct partido{
@@ -75,9 +75,10 @@ void ingresarequipo(vector<equipo> &equipos){
     cin>>opcion;
     while(opcion!="salir"){
         cout<<"ingrese el nombre del equipo, cuando desee salir, ingrese salir"<<endl;
-        getline(cin,opcion);
+        cin>>opcion;
         equipo.nombre=opcion;
-        for (int i = 0; i < 12; i++)
+        if(opcion!="salir"){
+        for (int i = 0; i < 1; i++)
         {
             cout<<"ingrese el numero del jugador"<<endl;
             cin>>jugador.numero;
@@ -85,20 +86,22 @@ void ingresarequipo(vector<equipo> &equipos){
             cin>>jugador.nombre;
             cout<<"ingrese la posicion del jugador"<<endl;
             cin>>jugador.posicion;
-            jugador.goles=0;
+            
             equipo.jugadores.push_back(jugador);
             }
         
         }
         
     }
+}
     void ingresarpartido(vector<equipo> &equipos){
         string opcion;
         string nombre;
         partido partido;
-        cout<<"desea ingresar un partido, sino ingrese salir"<<endl;
-        cin>>opcion;
-        while(opcion!="salir"){
+            cout<<"desea ingresar un partido, sino ingrese salir"<<endl;
+            cin>>opcion;
+            cout<<"ingrese numero de partido"<<endl;
+            cin>>partido.numero;
             cout<<"ingrese el nombre del equipo local"<<endl;
             cin>>partido.nombrelocal;
             cout<<"ingrese el nombre del equipo visitante"<<endl;
@@ -112,7 +115,7 @@ void ingresarequipo(vector<equipo> &equipos){
             cout<<"ingrese el mes del partido"<<endl;
             cin>>partido.fecha.mes;
             cout<<"ingrese el año del partido"<<endl;
-            cin>>partido.fecha.año;
+            cin>>partido.fecha.anio;
             for (int i = 0; i < equipos.size(); i++)
             {
                 if(equipos[i].nombre==partido.nombrelocal){
@@ -147,40 +150,40 @@ void ingresarequipo(vector<equipo> &equipos){
                 }
             }
             
-        }
+        
         for(int i=0; i<equipos.size();i++){
+            if(equipos[i].nombre==partido.nombrelocal){
             equipos[i].partidos.push_back(partido);
+            }
         }
       
    
         ordenar(equipos);
 
 }
-void mostrarpartrido(vector <equipo> equipos){
+void mostrarpartrido(vector <partido> partidos){
     string local;
     string visitante;
    
 
     cout<<"ingrese nombre del local"<<endl;
-    getline(cin,local);
+    cin>>local;
     cout<<"ingrese nombre del visitante"<<endl;
-    getline(cin,visitante);
-    for(int i=0; i<equipos.size();i++){
-        for(int j=0; j<equipos.size();j++){
-        {     
-            if(equipos[j].nombre==local && equipos[i].nombre==visitante){
-                cout<<"nombre del equipo local: "<<equipos[i].partidos[j].nombrelocal<<endl;
-                cout<<"nombre del equipo visitante: "<<equipos[i].partidos[j].nombrevisitante<<endl;
-                cout<<"goles del equipo local: "<<equipos[i].partidos[j].goleslocal<<endl;
-                cout<<"goles del equipo visitante: "<<equipos[i].partidos[j].golesvisitante<<endl;
-                cout<<"fecha del partido: "<<equipos[i].partidos[j].fecha.dia<<"/"<<equipos[i].partidos[j].fecha.mes<<"/"<<equipos[i].partidos[j].fecha.año<<endl;
+    cin>>visitante;
+    for(int i=0; i<partidos.size();i++){
+            if(partidos[i].nombrelocal==local && partidos[i].nombrevisitante==visitante){
+                cout<<"nombre del equipo local: "<<partidos[i].nombrelocal<<endl;
+                cout<<"nombre del equipo visitante: "<<partidos[i].nombrevisitante<<endl;
+                cout<<"goles del equipo local: "<<partidos[i].goleslocal<<endl;
+                cout<<"goles del equipo visitante: "<<partidos[i].golesvisitante<<endl;
+                cout<<"fecha del partido: "<<partidos[i].fecha.dia<<"/"<<partidos[i].fecha.mes<<"/"<<partidos[i].fecha.anio<<endl;
             }
         }
     
-    }
+}
 
-}
-}
+
+
 void mostrartabla(vector <equipo> &equipos){
     for(int i=0; i<equipos.size();i++){
         cout<<"posicion: "<<equipos[i].pos<<endl;
@@ -194,7 +197,7 @@ void mostrartabla(vector <equipo> &equipos){
             cout<<"nombre del equipo visitante: "<<equipos[i].partidos[j].nombrevisitante<<endl;
             cout<<"goles del equipo local: "<<equipos[i].partidos[j].goleslocal<<endl;
             cout<<"goles del equipo visitante: "<<equipos[i].partidos[j].golesvisitante<<endl;
-            cout<<"fecha del partido: "<<equipos[i].partidos[j].fecha.dia<<"/"<<equipos[i].partidos[j].fecha.mes<<"/"<<equipos[i].partidos[j].fecha.año<<endl;
+            cout<<"fecha del partido: "<<equipos[i].partidos[j].fecha.dia<<"/"<<equipos[i].partidos[j].fecha.mes<<"/"<<equipos[i].partidos[j].fecha.anio<<endl;
 
         }
 
@@ -205,25 +208,28 @@ void mostrartabla(vector <equipo> &equipos){
 
 int main(){
     int opcion=1;
+    vector<partido>partidos;
     vector<equipo> equipos=
     {
-        {"Real Madrid", {{1, "Thibaut Courtois", "Portero", 0}, {2, "Dani Carvajal", "Defensa", 0}, {3, "Éder Militão", "Defensa", 0}, {4, "David Alaba", "Defensa", 0}, {5, "Ferland Mendy", "Defensa", 0}, {6, "Toni Kroos", "Mediocampista", 0}, {7, "Luka Modric", "Mediocampista", 0}, {8, "Jude Bellingham", "Mediocampista", 0}, {9, "Vinicius Jr.", "Delantero", 0}, {10, "Rodrygo", "Delantero", 0}, {11, "Karim Benzema", "Delantero", 0}}, 10, 5, 1, {{1, "Real Madrid", "Barcelona", 3, 2, {1, 10, 2022}}}},
-        {"Barcelona", {{1, "Marc-André ter Stegen", "Portero", 0}, {2, "Jules Koundé", "Defensa", 0}, {3, "Ronald Araújo", "Defensa", 0}, {4, "Andreas Christensen", "Defensa", 0}, {5, "Alejandro Balde", "Defensa", 0}, {6, "Frenkie de Jong", "Mediocampista", 0}, {7, "Pedri", "Mediocampista", 0}, {8, "Gavi", "Mediocampista", 0}, {9, "Robert Lewandowski", "Delantero", 0}, {10, "Raphinha", "Delantero", 0}, {11, "Ousmane Dembélé", "Delantero", 0}}, 8, 6, 2, {{2, "Barcelona", "Atlético de Madrid", 1, 1, {1, 10, 2022}}}},
-        {"Atlético de Madrid", {{1, "Jan Oblak", "Portero", 0}, {2, "José María Giménez", "Defensa", 0}, {3, "Stefan Savic", "Defensa", 0}, {4, "Mario Hermoso", "Defensa", 0}, {5, "Nahuel Molina", "Defensa", 0}, {6, "Koke", "Mediocampista", 0}, {7, "Marcos Llorente", "Mediocampista", 0}, {8, "Rodrigo De Paul", "Mediocampista", 0}, {9, "Álvaro Morata", "Delantero", 0}, {10, "Antoine Griezmann", "Delantero", 0}, {11, "Memphis Depay", "Delantero", 0}}, 7, 4, 3, {{3, "Atlético de Madrid", "Real Madrid", 2, 0, {1, 10, 2022}}}},
-        {"Sevilla", {{1, "Yassine Bounou", "Portero", 0}, {2, "Jesús Navas", "Defensa", 0}, {3, "Marcos Acuña", "Defensa", 0}, {4, "Tanguy Nianzou", "Defensa", 0}, {5, "Loïc Badé", "Defensa", 0}, {6, "Ivan Rakitić", "Mediocampista", 0}, {7, "Óliver Torres", "Mediocampista", 0}, {8, "Fernando", "Mediocampista", 0}, {9, "Youssef En-Nesyri", "Delantero", 0}, {10, "Erik Lamela", "Delantero", 0}, {11, "Lucas Ocampos", "Delantero", 0}}, 6, 7, 4, {{4, "Sevilla", "Real Betis", 1, 1, {1, 10, 2022}}}},
-        {"Real Betis", {{1, "Claudio Bravo", "Portero", 0}, {2, "Germán Pezzella", "Defensa", 0}, {3, "Luiz Felipe", "Defensa", 0}, {4, "Juan Miranda", "Defensa", 0}, {5, "Youssouf Sabaly", "Defensa", 0}, {6, "Guido Rodríguez", "Mediocampista", 0}, {7, "Sergio Canales", "Mediocampista", 0}, {8, "William Carvalho", "Mediocampista", 0}, {9, "Borja Iglesias", "Delantero", 0}, {10, "Ayoze Pérez", "Delantero", 0}, {11, "Juanmi", "Delantero", 0}}, 5, 6, 5, {{5, "Real Betis", "Villarreal", 2, 2, {1, 10, 2022}}}},
-        {"Villarreal", {{1, "Pepe Reina", "Portero", 1}, {2, "Raúl Albiol", "Defensa", 0}, {3, "Juan Foyth", "Defensa", 0}, {4, "Alfonso Pedraza", "Defensa", 0}, {5, "Pau Torres", "Defensa", 0}, {6, "Dani Parejo", "Mediocampista", 0}, {7, "Étienne Capoue", "Mediocampista", 0}, {8, "Francis Coquelin", "Mediocampista", 0}, {9, "Gerard Moreno", "Delantero", 0}, {10, "Nicolas Jackson", "Delantero", 0}, {11, "Samuel Chukwueze", "Delantero", 0}}, 7, 5, 6, {{6, "Villarreal", "Real Madrid", 1, 3, {1, 10, 2022}}}},
-        {"Athletic Club", {{1, "Unai Simón", "Portero", 0}, {2, "Óscar de Marcos", "Defensa", 0}, {3, "Yeray Álvarez", "Defensa", 0}, {4, "Iñigo Martínez", "Defensa", 0}, {5, "Dani Vivian", "Defensa", 0}, {6, "Mikel Vesga", "Mediocampista", 0}, {7, "Oihan Sancet", "Mediocampista", 0}, {8, "Iker Muniain", "Mediocampista", 0}, {9, "Iñaki Williams", "Delantero", 0}, {10, "Nico Williams", "Delantero", 0}, {11, "Gorka Guruzeta", "Delantero", 0}}, 6, 5, 7, {{7, "Athletic Club", "Real Sociedad", 1, 1, {1, 10, 2022}}}},
-        {"Real Sociedad", {{1, "Álex Remiro", "Portero", 0}, {2, "Andoni Gorosabel", "Defensa", 0}, {3, "Robin Le Normand", "Defensa", 0}, {4, "Igor Zubeldia", "Defensa", 0}, {5, "Aihen Muñoz", "Defensa", 0}, {6, "Martín Zubimendi", "Mediocampista", 0}, {7, "Mikel Merino", "Mediocampista", 0}, {8, "David Silva", "Mediocampista", 0}, {9, "Alexander Sørloth", "Delantero", 0}, {10, "Takefusa Kubo", "Delantero", 0}, {11, "Brais Méndez", "Delantero", 0}}, 6, 4, 8, {{8, "Real Sociedad", "Athletic Club", 1, 1, {1, 10, 2022}}}},    
+        {"RealMadrid", {{1, "Thibaut Courtois", "Portero"}, {2, "Dani Carvajal", "Defensa"}, {3, "Éder Militão", "Defensa"}, {4, "David Alaba", "Defensa"}, {5, "Ferland Mendy", "Defensa"}, {6, "Toni Kroos", "Mediocampista"}, {7, "Luka Modric", "Mediocampista"}, {8, "Jude Bellingham", "Mediocampista"}, {9, "Vinicius Jr.", "Delantero"}, {10, "Rodrygo", "Delantero"}, {11, "Karim Benzema", "Delantero"}}, 0, 0, 0, 1, {{1, "RealMadrid", "Barcelona", 0, 0, {1, 10, 2022}}}},
+        {"Barcelona", {{1, "Marc-André ter Stegen", "Portero"}, {2, "Jules Koundé", "Defensa"}, {3, "Ronald Araújo", "Defensa"}, {4, "Andreas Christensen", "Defensa"}, {5, "Alejandro Balde", "Defensa"}, {6, "Frenkie de Jong", "Mediocampista"}, {7, "Pedri", "Mediocampista"}, {8, "Gavi", "Mediocampista"}, {9, "Robert Lewandowski", "Delantero"}, {10, "Raphinha", "Delantero"}, {11, "Ousmane Dembélé", "Delantero"}}, 0, 0, 0, 2, {{1, "RealMadrid", "Barcelona", 0, 0, {1, 10, 2022}}}},
+        {"Atlético de Madrid", {{1, "Jan Oblak", "Portero"}, {2, "José María Giménez", "Defensa"}, {3, "Stefan Savic", "Defensa"}, {4, "Mario Hermoso", "Defensa"}, {5, "Nahuel Molina", "Defensa"}, {6, "Koke", "Mediocampista"}, {7, "Marcos Llorente", "Mediocampista"}, {8, "Rodrigo De Paul", "Mediocampista"}, {9, "Álvaro Morata", "Delantero"}, {10, "Antoine Griezmann", "Delantero"}, {11, "Memphis Depay", "Delantero"}}, 0, 0, 0, 3, {{1, "AtléticoDeMadrid", "RealBetis", 0, 0, {1, 10, 2022}}}},
+        {"Sevilla", {{1, "Yassine Bounou", "Portero"}, {2, "Jesús Navas", "Defensa"}, {3, "Marcos Acuña", "Defensa"}, {4, "Tanguy Nianzou", "Defensa"}, {5, "Loïc Badé", "Defensa"}, {6, "Ivan Rakitić", "Mediocampista"}, {7, "Óliver Torres", "Mediocampista"}, {8, "Fernando", "Mediocampista"}, {9, "Youssef En-Nesyri", "Delantero"}, {10, "Erik Lamela", "Delantero"}, {11, "Lucas Ocampos", "Delantero"}}, 0, 0, 0, 4, {{1, "AthleticClub", "Sevilla", 0, 0, {1, 10, 2022}}}},
+        {"RealBetis", {{1, "Claudio Bravo", "Portero"}, {2, "Germán Pezzella", "Defensa"}, {3, "Luiz Felipe", "Defensa"}, {4, "Juan Miranda", "Defensa"}, {5, "Youssouf Sabaly", "Defensa"}, {6, "Guido Rodríguez", "Mediocampista"}, {7, "Sergio Canales", "Mediocampista"}, {8, "William Carvalho", "Mediocampista"}, {9, "Borja Iglesias", "Delantero"}, {10, "Ayoze Pérez", "Delantero"}, {11, "Juanmi", "Delantero"}}, 0, 0, 0, 5, {{1, "AtléticoDeMadrid", "RealBetis", 0, 0, {1, 10, 2022}}}},
+        {"Villarreal", {{1, "Pepe Reina", "Portero"}, {2, "Raúl Albiol", "Defensa"}, {3, "Juan Foyth", "Defensa"}, {4, "Alfonso Pedraza", "Defensa"}, {5, "Pau Torres", "Defensa"}, {6, "Dani Parejo", "Mediocampista"}, {7, "Étienne Capoue", "Mediocampista"}, {8, "Francis Coquelin", "Mediocampista"}, {9, "Gerard Moreno", "Delantero"}, {10, "Nicolas Jackson", "Delantero"}, {11, "Samuel Chukwueze", "Delantero"}}, 0, 0, 0, 6, {{1, "RealSociedad", "Villarreal", 0, 0, {1, 10, 2022}}}},
+        {"Athletic Club", {{1, "Unai Simón", "Portero"}, {2, "Óscar de Marcos", "Defensa"}, {3, "Yeray Álvarez", "Defensa"}, {4, "Iñigo Martínez", "Defensa"}, {5, "Dani Vivian", "Defensa"}, {6, "Mikel Vesga", "Mediocampista"}, {7, "Oihan Sancet", "Mediocampista"}, {8, "Iker Muniain", "Mediocampista"}, {9, "Iñaki Williams", "Delantero"}, {10, "Nico Williams", "Delantero"}, {11, "Gorka Guruzeta", "Delantero"}}, 0, 0, 0, 7, {{1, "AthleticClub", "Sevilla", 0, 0, {1, 10, 2022}}}},
+        {"RealSociedad", {{1, "Álex Remiro", "Portero"}, {2, "Andoni Gorosabel", "Defensa"}, {3, "Robin Le Normand", "Defensa"}, {4, "Igor Zubeldia", "Defensa"}, {5, "Aihen Muñoz", "Defensa"}, {6, "Martín Zubimendi", "Mediocampista"}, {7, "Mikel Merino", "Mediocampista"}, {8, "David Silva", "Mediocampista"}, {9, "Alexander Sørloth", "Delantero"}, {10, "Takefusa Kubo", "Delantero"}, {11, "Brais Méndez", "Delantero"}}, 0, 0, 0, 8, {{1, "RealSociedad", "Villareal", 0, 0, {1, 10, 2022}}}},    
     };
     
     while (opcion)
-    {
+    {   
+        cout<<"_____________________________________________________________________"<<endl;
         cout<<"Ingresar un equipo=1"<<endl;
         cout<<"Ingresar un partido=2"<<endl;
-        cout<<"mostrar unpartido=3"<<endl;
-        cout<<"mostrar tabla anual=3"<<endl;
+        cout<<"mostrar un partido=3"<<endl;
+        cout<<"mostrar tabla anual=4"<<endl;
         cout<<"Salir=0"<<endl;
+        cout<<"_____________________________________________________________________"<<endl;
         cin>>opcion;
         if(opcion==1){
             ingresarequipo(equipos);
@@ -232,7 +238,7 @@ int main(){
             ingresarpartido(equipos);
         }
         else if(opcion==3){
-            mostrarpartrido(equipos);
+            mostrarpartrido(partidos);
         }
         else if(opcion==4){
             mostrartabla(equipos);
