@@ -18,9 +18,8 @@ int mayor(productos_t gondola[3][4]){
     int max=0;
     int aux=0;
     int colum=0;
-     for(int i=0;i<4;i++){
-                for(int j=0;j<3;j++){
-                    max=gondola[j][i].precio;
+        for(int j=0;j<4;j++){
+                    max=gondola[1][j].precio+gondola[2][j].precio+gondola[3][j].precio;
                       if(max>aux){
                         aux=max;
                         colum=j+1;
@@ -34,7 +33,7 @@ int mayor(productos_t gondola[3][4]){
 
 
 
-        }
+        
 return colum;
 }
 void nom(productos_t gondola[3][4]){
@@ -44,11 +43,13 @@ void nom(productos_t gondola[3][4]){
 }
 int promedio(productos_t gondola[3][4]){
     int prom=0;
+    int filas=0;
+    int colum=0;
     for(int i=0; i<3; i++){
         for (int j=0; j<4; j++){
             prom=prom+gondola[i][j].precio;
-              int filas=i;
-                int colum=j;
+            filas=i;
+            colum=j;
         }
 
   
@@ -86,7 +87,7 @@ return contador;
 int main(){
     productos_t gondola[3][4]={
         { 
-            {"Laptop", 123, "Alienware", 1500, {}},
+            {"Laptop", 123, "Alienware", 15000, {}},
             {"salame", 456, "Samsung", 800, {12, 3, 2025}},
             {"Tablet", 789, "Apple", 1000, {}},
             {"Auriculares", 101, "Sony", 120, {}}
@@ -99,9 +100,9 @@ int main(){
         },
         { 
             {"Monitor", 606, "Samsung", 3500, {}},
-            {"Leche", 707, "PlayStation", 500, {12, 3, 2025}},
-            {"Altavoces", 808, "Bose", 200, {}},
-            {"TV", 909, "LG", 750, {}}
+            {"Leche", 707, "PlayStation", 5000, {12, 3, 2025}},
+            {"Altavoces", 808, "Bose", 300, {}},
+            {"TV", 909, "LG", 75000, {}}
         }
     };
     cout<<mayor(gondola)<<endl;
