@@ -10,7 +10,7 @@ public class dialaboral {
             System.out.println("El dia es laboral");
         }
         else {
-            System.out.println("El dia no es laboral");
+            System.out.println("el dia no es laboral");
         }
     }
 }

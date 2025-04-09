@@ -8,7 +8,7 @@ public class ingredatos {
         char c;
 
         Scanner entrada= new Scanner(System.in);
-        System.out.print("valor para n");
+        System.out.print("Valor para n");
         n = entrada.nextInt();
         System.out.print("valor para a");
         a = entrada.nextDouble();

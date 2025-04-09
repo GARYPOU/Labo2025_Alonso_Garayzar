@@ -4,7 +4,7 @@ public class reemplazoletra {
         Scanner e = new Scanner(System.in);
         String texto = "Ayer me compre muñecos de la marca 'ToyCo' por internet.";
         String nuevo_string = "";
-        System.out.println("Por cual char quiere reemplazar");
+        System.out.println("por cual char quiere reemplazar");
         char nuevo_char = e.nextLine().charAt(0);
         for (int i = 0; i < texto.length(); i++) {
             char c = texto.charAt(i);

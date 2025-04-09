@@ -13,7 +13,7 @@ public class ContadorDeNumeros {
         Scanner entrada=new Scanner(System.in);
        
             while(num!=-1){
-                System.out.print("Ingrese un numero, cuando desea salir ingrese -1");
+                System.out.print("Ingrese un numero, Cuando desea salir ingrese -1");
                 num=entrada.nextInt();
                 
                 contador=contador+1;

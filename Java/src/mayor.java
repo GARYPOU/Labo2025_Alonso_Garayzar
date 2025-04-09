@@ -5,7 +5,7 @@ public class mayor {
         int x;
         int y;
         Scanner e=new Scanner(System.in);
-        System.out.println("ingrese numero 1");
+        System.out.println("Ingrese numero 1");
         x= e.nextInt();
         System.out.println("ingrese numero 2");
         y= e.nextInt();
