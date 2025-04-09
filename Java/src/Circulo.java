@@ -32,7 +32,6 @@ public class Circulo {
 
     public static void main(String[] args) {
         Circulo c1 = new Circulo();
-        Circulo c2 = new Circulo(c1.radio);
         System.out.println("area="+ c1.calculararea());
         System.out.println("perimetro="+ c1.calcularperi());
     }
