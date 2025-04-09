@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Numeros {
+public class ContadorDeNumeros {
     public static void main(String[] args) {
         int contador=0;
         int num=0;
