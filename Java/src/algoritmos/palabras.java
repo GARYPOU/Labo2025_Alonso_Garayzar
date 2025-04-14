@@ -1,3 +1,5 @@
+package algoritmos;
+
 import java.util.Scanner;
 
 public class palabras {
@@ -20,7 +22,7 @@ public class palabras {
                         contador=contador+1;
                         }
                             if(contador==pal1.length()){
-                            System.out.print("Las palabras son iguales");
+                            System.out.print("Las algoritmos.palabras son iguales");
                             verda=0;
                             }
                     
@@ -30,14 +32,14 @@ public class palabras {
                 }
              
                 if (verda==1){
-                System.out.print("Las palabras no son iguales");
+                System.out.print("Las algoritmos.palabras no son iguales");
                 }
             
             
 
     }
     else{
-        System.out.print("Las palabras no son iguales");
+        System.out.print("Las algoritmos.palabras no son iguales");
     }
 }
 }

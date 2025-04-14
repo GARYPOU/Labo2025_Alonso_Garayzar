@@ -1,3 +1,5 @@
+package algoritmos;
+
 import java.util.Scanner;
 
 public class ContadorDeNumeros {

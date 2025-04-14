@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package algoritmos;
 
 public class DivisibleForDivisibleWhile {
     public static void main(String[] args) {

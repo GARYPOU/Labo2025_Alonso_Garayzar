@@ -1,3 +1,5 @@
+package algoritmos;
+
 import java.util.Scanner;
 public class reemplazoletra {
     public static void main(String[] args) {
