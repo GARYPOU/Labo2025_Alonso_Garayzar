@@ -1,11 +1,11 @@
 package personas;
 
-public class Personas {
+public class Persona {
     private String nombre;
     private int edad;
     private String direccion;
 
-    public Personas(){
+    public Persona(){
         this.nombre="Juaita";
         this.edad=15;
         this.direccion="Urquiza toilet 9100";
@@ -14,7 +14,7 @@ public class Personas {
     }
 
 
-    public Personas(String nom, int eda, String dir){
+    public Persona(String nom, int eda, String dir){
         this.nombre=nom;
         this.edad=eda;
         this.direccion=dir;
@@ -49,7 +49,7 @@ public class Personas {
 
     public String mostrardatos(){
         String x;
-        Personas p1 = new Personas();
+        Persona p1 = new Persona();
         x = (String) ("Nombre:"+p1.nombre+" "+"Edad:"+p1.edad+" "+"Direccion:"+p1.direccion);
         return x;
     }
@@ -58,7 +58,7 @@ public class Personas {
 
 
     public static void main(String[] args) {
-        Personas p1 = new Personas();
+        Persona p1 = new Persona();
         System.out.println(p1.mostrardatos());
 
     }
