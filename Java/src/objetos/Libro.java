@@ -97,13 +97,13 @@ public class Libro {
     }
 
     public void comparar(Fecha f2){
-       if(publicacion.getAnio()>f2.getAnio()) {
+       if(publicacion.getAnio()<f2.getAnio()) {
            System.out.println("La primera Fecha es anterior");
        }
-        else if(publicacion.getAnio()>f2.getAnio() && publicacion.getMes()>f2.getMes()){
+        else if(publicacion.getAnio()<f2.getAnio() && publicacion.getMes()<f2.getMes()){
             System.out.println("La primera Fecha es anterior");
         }
-       else if(publicacion.getAnio()>f2.getAnio() && publicacion.getMes()>f2.getMes() && publicacion.getDia()>f2.getDia()){
+       else if(publicacion.getAnio()<f2.getAnio() && publicacion.getMes()<f2.getMes() && publicacion.getDia()<f2.getDia()){
            System.out.println("La primera Fecha es anterior");
        }
        else{
