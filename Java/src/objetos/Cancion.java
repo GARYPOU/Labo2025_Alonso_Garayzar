@@ -1,21 +1,23 @@
 
+package objetos;
 
 
+import personas.Persona;
 
 public class Cancion {
     private String titulo;
-    private String autor;
+    private Persona autor;
   
 
 
-    public Cafetera() {
+    public Cancion() {
       this.titulo="";
-      this.autor="";
+      this.autor=new Persona("",0,"");
 
     }
 
     
-    public Cafetera(String titulo, String autor) {
+    public Cancion(String titulo, Persona autor) {
         this.titulo=titulo;
         this.autor=autor;
 
@@ -34,11 +36,11 @@ public class Cancion {
         this.titulo=titulo;
     }
 
-    public int getautor() {
+    public Persona getautor() {
         return autor;
     }
 
-    public void setcantActual(String autor) {
+    public void setcantActual(Persona autor) {
         this.autor = autor;
     }
 

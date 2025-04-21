@@ -1,5 +1,5 @@
 
-
+package objetos;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class Cafetera {
 
 
     }
-    public ajustar() {
+    public void ajustar() {
         if(cantActual>cantMaxima){
         cantActual=1000;
         }
@@ -43,7 +43,7 @@ public class Cafetera {
     }
 
     public void setcantActual(int cantActual) {
-        this.cantactual = cantActual;
+        this.cantActual = cantActual;
     }
 
    

@@ -1,4 +1,4 @@
-
+package personas;
 
 public class Customer
 
@@ -6,15 +6,21 @@ public class Customer
     private String name;
 
 
-    public Customer(string name){
-        this.name=name;
+    public Customer() {
+        this.name = "jorge";
+
+    }
+    public Customer(String name){
+            this.name=name;
 
 
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
-    public string getName(){
+    public String getName(){
         return name;
     }
 
