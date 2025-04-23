@@ -1,4 +1,4 @@
-package fechas;
+package Fechas;
 
 import java.util.Scanner;
 
