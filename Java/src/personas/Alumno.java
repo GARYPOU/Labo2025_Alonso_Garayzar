@@ -1,25 +1,29 @@
 package personas;
-import Fechas.Fecha;
-import objetos.Nota;
 
+import objetos.Nota;
+import objetos.Materia;
+
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Alumno {
     private String nombre;
     private String apellido;
-    private Fecha fechanacimiento;
-    private ArrayList<Nota> notas = new ArrayList<Nota>();
+    private LocalDate fechanacimiento;
+    private ArrayList<Nota> notas ;
+    private ArrayList<Materia> materias ;
+    Period diff = this.fechanacimiento.until(LocalDate.now());
+    private int edad = diff.getYears();
 
     public Alumno(){
         this.nombre="Pepe";
         this.apellido="Alonso";
-        this.fechanacimiento.setAnio(2024);
-        this.fechanacimiento.setMes(12);
-        this.fechanacimiento.setDia(31);
+        this.fechanacimiento = LocalDate.of(2023,11,31);
         this.notas.add(new Nota(2,"Historia"));
 
     }
-    public Alumno(String nombre, String apellido, Fecha fechanacimiento, ArrayList<Nota> notas){
+    public Alumno(String nombre, String apellido, LocalDate fechanacimiento, ArrayList<Nota> notas){
         this.nombre=nombre;
         this.apellido=apellido;
         this.fechanacimiento=fechanacimiento;
@@ -42,11 +46,11 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public Fecha getFechanacimiento() {
+    public LocalDate getFechanacimiento() {
         return fechanacimiento;
     }
 
-    public void setFechanacimiento(Fecha fechanacimiento) {
+    public void setFechanacimiento(LocalDate fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
 
@@ -58,14 +62,18 @@ public class Alumno {
 
         this.notas = notas;
     }
+
+    public int getEdad() {
+        return edad;
+    }
+
     public void agregarNotas(){
 
         ArrayList<Nota> n1 = new ArrayList<Nota>();
         ArrayList<Nota> n2 = new ArrayList<Nota>();
         n1.add(new Nota(1,"Mates"));
         n2.add(new Nota(3,"Historia"));
-        Alumno a1 = new Alumno("Jorge","Ruiz",new Fecha(1,3,2002),new ArrayList<Nota>(n1));
-        Alumno a2 = new Alumno("mati","Rui",new Fecha(5,8,2045),new ArrayList<Nota>(n2));
+
     }
     public int mayorNota(){
         Nota notaTemp;
@@ -83,15 +91,30 @@ public class Alumno {
         return num;
 
     }
-        public void mnorNota(){
-            System.out.println("menor nota:"+this.notas.get(mayorNota()));
+    public void mnorNota(){
+        System.out.println("menor nota:"+this.notas.get(mayorNota()));
         
-        }
+    }
+
+    public void agregaralumno(Materia m1){
+        this.materias.add(m1);
+        m1.agregar(this);
+
+
+    }
+   public void promNotas(){
+       for (int i = 0; i < notas.size(); i++) {
+           int notastotal=0;
+           notastotal=notas.get(i).getNota();
+
+       }
+   }
+
 
 
 
     public static void main(String[] args) {
-
+        Materia m1 = new Materia();
     }
 }
 
