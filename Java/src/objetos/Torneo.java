@@ -11,7 +11,8 @@ public class Torneo {
     private ArrayList<Equipo>EquiposTarde;
     private ArrayList<Equipo>EquiposNoche;
     public Torneo(){
-    if(equipos.size()<20) {
+
+        if(equipos.size()<20) {
         this.equipos = new ArrayList<>();
     }
     }
