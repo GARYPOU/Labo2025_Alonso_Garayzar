@@ -21,7 +21,7 @@ public class Array {
         palabras.add("Feli");
         palabras.add("Jorge");
         palabras.add("Feñi");
-        personas.add(new Persona("jorge",15,"juan b justo"));
+        personas.add(new Persona());
         for(int i=0; i<numeros.size(); i++){
             total = total + numeros.get(i);
     }
@@ -35,8 +35,8 @@ public class Array {
             }
         }
         for(Persona persona : personas){
-            if(persona.getEdad()>30);
-            System.out.println("nombre" + persona.getNombre() + "edad" + persona.getEdad() + "dir" + persona.getDireccion());
+            if(persona.getNacimiento().getYear()>30);
+            System.out.println("nombre" + persona.getNombre() + "edad" + persona.getNacimiento().getYear() + "dir" + persona.getDireccion());
         }
 
 

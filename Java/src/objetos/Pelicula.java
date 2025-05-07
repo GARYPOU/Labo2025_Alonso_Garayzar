@@ -95,7 +95,7 @@ public class Pelicula {
         ArrayList<Persona>actoresMayores;
         actoresMayores=new ArrayList<>();
         for (Persona p: actores){
-            if(p.getEdad()>18){
+            if(p.getNacimiento().getYear()>18){
                 actoresMayores.add(p);
             }
         }

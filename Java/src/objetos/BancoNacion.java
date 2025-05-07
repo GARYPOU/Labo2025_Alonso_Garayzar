@@ -21,8 +21,11 @@ public class BancoNacion {
         this.direccion=direccion;
         this.prestamo=prestamo;
         this.boveda=prestamo;
+        this.trabajadores=new ArrayList<>();
     }
     public void agregarTrabajador(Persona trabajador) {
+        Persona p1 = new Persona();
+
         trabajadores.add(trabajador);
     }
     public int cantidadTrabajadores(){
@@ -33,8 +36,8 @@ public class BancoNacion {
         return cant;
     }
     public Persona empleadoMayorAntiguedad(){
-        Persona per = new Persona();
-        LocalDate fecha=LocalDate.of(0,0,0);
+        Persona per = trabajadores.getFirst();
+        LocalDate fecha=LocalDate.of(1,1,1);
         for(Persona p: trabajadores) {
             if(fecha.getYear()<p.antiguedad().getYear()){
                 fecha=p.antiguedad();
@@ -83,5 +86,9 @@ public class BancoNacion {
 
     public void setTrabajadores(ArrayList<Persona> trabajadores) {
         this.trabajadores = trabajadores;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

@@ -19,7 +19,7 @@ public class Libro {
         this.isbn = 12;
         this.paginas = 200;
         this.editorial = "La Paz";
-        this.autor = new Persona("Jorgito", 40 ,"Juan v justo 9100");
+        this.autor = new Persona();
         this.publicacion = new Fecha(1,2,2000);
 
     }

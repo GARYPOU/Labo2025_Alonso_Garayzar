@@ -40,6 +40,7 @@ public class Persona {
         this.apellido=apellido;
         this.direccion=direccion;
         this.nacimiento=nacimiento;
+        this.fechaEmpezo=LocalDate.now();
 
 
     }
@@ -94,9 +95,15 @@ public class Persona {
         return x;
     }
     public LocalDate antiguedad() {
-        int year=fechaEmpezo.getYear()-LocalDate.now().getYear();
-        int month=fechaEmpezo.getMonthValue()-LocalDate.now().getMonthValue();
-        int day=fechaEmpezo.getDayOfMonth()-LocalDate.now().getDayOfMonth();
+        int year=LocalDate.now().getYear()-fechaEmpezo.getYear();
+        int month=LocalDate.now().getMonthValue()-fechaEmpezo.getMonthValue();
+        if(month<1){
+            month=1;
+        }
+        int day=LocalDate.now().getDayOfMonth()-fechaEmpezo.getDayOfMonth();
+        if(day<1){
+            day=1;
+        }
         return LocalDate.of(year, month, day);
 
     }

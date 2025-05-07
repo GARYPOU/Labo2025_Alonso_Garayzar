@@ -10,7 +10,7 @@ public class Cd {
 
     public Cd() {
 
-        this.canciones.add (new Cancion("La quinta sinfonia", new Persona("Bethoven", 170, "La antigua Atlantis")));
+        this.canciones.add (new Cancion("La quinta sinfonia", new Persona()));
 
     }
 
@@ -40,7 +40,7 @@ public class Cd {
         Scanner e = new Scanner(System.in);
         int num = e.nextInt();
         num=num-1;
-        System.out.println(canciones.get(num).gettitulo()+" "+canciones.get(num).getautor().getNombre()+" "+canciones.get(num).getautor().getEdad()+" "+canciones.get(num).getautor().getDireccion());
+        System.out.println(canciones.get(num).gettitulo()+" "+canciones.get(num).getautor().getNombre()+" "+canciones.get(num).getautor().getNacimiento().getYear()+" "+canciones.get(num).getautor().getDireccion());
 
     }
     public void grabarCancion(Cancion c2){
@@ -71,10 +71,10 @@ public class Cd {
         Cd c1 = new Cd();
         Cancion c2 = new Cancion();
         Cancion c3 = new Cancion();
-        c1.canciones.add(new Cancion("Shake it off", new Persona("Taylor Swift", 35, "Chicago")));
-        c1.canciones.add(new Cancion("Enemy", new Persona("Imagine Dragons", 43, "Venezuela")));
-        c2=new Cancion("Fanatico", new Persona("Lali", 23, "Buenos Aires"));
-        c3=new Cancion("Frozen", new Persona("Elsa", 33, "Bolivia"));
+        c1.canciones.add(new Cancion("Shake it off", new Persona()));
+        c1.canciones.add(new Cancion("Enemy", new Persona()));
+        c2=new Cancion("Fanatico", new Persona());
+        c3=new Cancion("Frozen", new Persona());
         c1.cantCanciones(cant);
         c1.mostrarCancion();
         c1.grabarCancion(c2);
