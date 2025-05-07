@@ -44,17 +44,22 @@ public class Estanteria {
     }
     public ArrayList<Persona> direcRepetidos(){
         ArrayList<Persona>dir;
+        ArrayList<Persona>dirRepetidos;
         dir=new ArrayList<>();
+        dirRepetidos=new ArrayList<>();
         for(Pelicula p: peliculas){
             for (Persona di: p.directores) {
-                for (Persona per : dir) {
-                    if(di.getNombre()!=per.getNombre()){
-                        dir.add(di);
-                    }
+                dir.add(di);
+            }
+        }
+        for(Persona direc : dir){
+            for(int i=1; i<dir.size();i++){
+                if(direc.getNombre()==dir.get(i).getNombre()){
+                    dirRepetidos.add(direc);
                 }
             }
         }
-        return dir;
+        return dirRepetidos;
     }
     public void pelisCortas (){
         for (Pelicula peli: peliculas){
