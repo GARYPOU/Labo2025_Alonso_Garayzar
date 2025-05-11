@@ -48,7 +48,7 @@ public class Estanteria {
         dir=new ArrayList<>();
         dirRepetidos=new ArrayList<>();
         for(Pelicula p: peliculas){
-            for (Persona di: p.directores) {
+            for (Persona di: p.getDirectores()) {
                 dir.add(di);
             }
         }
