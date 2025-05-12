@@ -21,7 +21,7 @@ public class Pelicula {
         this.idiomas= new ArrayList<>();
 
     }
-    public Pelicula(String nombre, String genero, double duracion, ArrayList<Persona>directores, ArrayList<Persona>actores, ArrayList<String>idiomas){
+    public Pelicula(String nombre, double duracion, String genero, ArrayList<Persona>directores, ArrayList<Persona>actores, ArrayList<String>idiomas){
         this.nombre=nombre;
         this.duracion=duracion;
         this.genero=genero;
