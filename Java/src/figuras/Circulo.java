@@ -1,6 +1,6 @@
 package figuras;
 
-public class Circulo {
+public class Circulo extends Figura{
     private int radio;
 
     public Circulo(){

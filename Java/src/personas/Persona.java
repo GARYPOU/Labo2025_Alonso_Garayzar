@@ -1,7 +1,6 @@
 package personas;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Persona {
     private String nombre;
@@ -23,15 +22,34 @@ public class Persona {
 
 
     }
+    public Persona(String nombre){
+        this.nombre=nombre;
 
 
 
-    public Persona(String nom,String apellido, int direccion, LocalDate nacimiento,LocalDate fechaEmpezo){
+    }
+    public Persona(String nom, String apellido, LocalDate nacimiento){
+        this.nombre=nom;
+        this.apellido=apellido;
+        this.nacimiento=nacimiento;
+
+
+    }
+
+    public Persona(String nom, String apellido, int direccion, LocalDate nacimiento, LocalDate fechaEmpezo){
         this.nombre=nom;
         this.apellido=apellido;
         this.direccion=direccion;
         this.nacimiento=nacimiento;
         this.fechaEmpezo=fechaEmpezo;
+
+
+    }
+
+    public Persona(String nom, LocalDate nacimiento){
+        this.nombre=nom;
+        this.nacimiento=nacimiento;
+
 
 
     }
@@ -52,8 +70,8 @@ public class Persona {
         return nombre;
     }
 
-    public void setNombre(String nom){
-        this.nombre=nom;
+    public void setNombre(String nombre){
+        this.nombre=nombre;
     }
 
     public LocalDate getNacimiento() {

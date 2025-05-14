@@ -1,8 +1,15 @@
 package figuras;
 
-public class Rectangulo {
+public class Rectangulo extends Figura{
     private int altura;
     private int base;
+
+
+    public Rectangulo(){
+        this.altura=8;
+        this.base=3;
+
+    }
 
 
     public Rectangulo(int alt, int bas){
@@ -29,13 +36,13 @@ public class Rectangulo {
         this.base=bas;
     }
 
-    public float calculararea(){
+    public float calcularareas(){
         float x;
         x = (float) (this.altura*this.base);
         return x;
     }
 
-    public float calcularperi(){
+    public float calcularperis(){
         float x;
         x = (float) (2 * this.altura + 2*this.base);
         return x;
@@ -44,7 +51,7 @@ public class Rectangulo {
 
     public static void main(String[] args) {
         Rectangulo r1 = new Rectangulo(2,3);
-        System.out.println("area="+ r1.calculararea());
-        System.out.println("perimetro="+ r1.calcularperi());
+        System.out.println("area="+ r1.calcularareas());
+        System.out.println("perimetro="+ r1.calcularperis());
     }
 }

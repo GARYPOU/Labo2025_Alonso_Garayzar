@@ -1,64 +1,18 @@
 package objetos;
 
-public class Carro {
-    private String marca;
-    private String modelo;
-    private String color;
-    private int velocidad;
+public class Carro extends Automovil {
 
 
-    public Carro(String mar, String mod, String col, int vel){
-        this.marca=mar;
-        this.modelo=mod;
-        this.color=col;
-        this.velocidad=vel;
 
+    public Carro(String marca, String modelo, String color, int velocidad, String patente){
+        super(marca, modelo, color,velocidad, patente);
     }
 
 
 
-    public String getMarca(){
-        return marca;
-    }
-
-    public void setMarca(String mar){
-        this.marca=mar;
-    }
-
-    public String getModelo(){
-        return modelo;
-    }
-
-    public void setModelo(String mod){
-        this.modelo=mod;
-    }
-    public String getColor(){
-        return color;
-    }
-
-    public void setColor(String col){
-        this.color=col;
-    }
-    public int getVelocidad(){
-        return velocidad;
-    }
-
-    public void setVelocidad(int vel){
-        this.velocidad=vel;
-    }
 
 
-    public float calcacel(){
-        float x;
-        x = (float) (velocidad/60);
-        return x;
-    }
 
-    public float calcfreno(){
-        float x;
-        x = (float) ((velocidad*velocidad)/180);
-        return x;
-    }
 
 
     public static void main(String[] args) {

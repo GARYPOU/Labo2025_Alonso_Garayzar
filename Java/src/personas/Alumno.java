@@ -7,52 +7,25 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
-public class Alumno {
-    private String nombre;
-    private String apellido;
-    private LocalDate fechanacimiento;
+public class Alumno extends Persona {
+
+
     private ArrayList<Nota> notas ;
     private ArrayList<Materia> materias ;
-    Period diff = this.fechanacimiento.until(LocalDate.now());
+    Period diff = this.getNacimiento().until(LocalDate.now());
     private int edad = diff.getYears();
 
     public Alumno(){
-        this.nombre="Pepe";
-        this.apellido="Alonso";
-        this.fechanacimiento = LocalDate.of(2023,11,31);
+        super();
         this.notas.add(new Nota(2,"Historia"));
 
     }
     public Alumno(String nombre, String apellido, LocalDate fechanacimiento, ArrayList<Nota> notas){
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.fechanacimiento=fechanacimiento;
+        super(nombre, apellido, fechanacimiento);
         this.notas=notas;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public LocalDate getFechanacimiento() {
-        return fechanacimiento;
-    }
-
-    public void setFechanacimiento(LocalDate fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
-    }
 
     public ArrayList<Nota> getNotas() {
         return notas;

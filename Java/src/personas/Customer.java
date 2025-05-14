@@ -1,28 +1,22 @@
 package personas;
 
-public class Customer
+public class Customer extends Persona
 
 {
-    private String name;
+
 
 
     public Customer() {
-        this.name = "jorge";
+        super();
 
     }
-    public Customer(String name){
-            this.name=name;
+    public Customer(String nombre){
+            super(nombre);
 
 
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getName(){
-        return name;
-    }
 
   
         public static void main(String[] args) {

@@ -15,12 +15,12 @@ public class SistemaBancoNacion{
 
 public static void main(String[] args) {
 
-    Persona p1 = new Persona("Miguel", "Lopez", 32987990,
-            LocalDate.of(1985, 10, 12), LocalDate.of(2020, 5, 8));
+    Persona p1 = new Persona("Miguel",
+            LocalDate.of(1985, 10, 12));
     Persona p2 = new Persona("Juana", "Gomez", 39987990,
             LocalDate.of(1986, 7, 28));
-    Persona p3 = new Persona("Candela", "Navarro", 40987990,
-            LocalDate.of(1993, 2, 4), LocalDate.of(2017, 5, 25));
+    Persona p3 = new Persona("Candela",
+            LocalDate.of(1993, 2, 4));
 
     BancoNacion sucursalUrquiza = new BancoNacion("Av. Triunvirato 3450", true, false);
     BancoNacion sucursalPueyrredon = new BancoNacion("Cochrane 2874", true, true);
