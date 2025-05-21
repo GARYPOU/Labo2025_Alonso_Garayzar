@@ -14,16 +14,19 @@ public class Alumno extends Persona {
     private ArrayList<Materia> materias ;
     Period diff = this.getNacimiento().until(LocalDate.now());
     private int edad = diff.getYears();
+    private String division;
 
     public Alumno(){
         super();
         this.notas.add(new Nota(2,"Historia"));
 
     }
-    public Alumno(String nombre, String apellido, LocalDate fechanacimiento, ArrayList<Nota> notas){
+    public Alumno(String nombre, String apellido, LocalDate fechanacimiento, ArrayList<Nota> notas, String division){
         super(nombre, apellido, fechanacimiento);
         this.notas=notas;
+        this.division=division;
     }
+
 
 
 

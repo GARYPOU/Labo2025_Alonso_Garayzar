@@ -25,9 +25,13 @@ public class Persona {
     public Persona(String nombre){
         this.nombre=nombre;
 
-
-
     }
+
+    public Persona(String nom, String apellido){
+        this.nombre=nom;
+        this.apellido=apellido;
+    }
+
     public Persona(String nom, String apellido, LocalDate nacimiento){
         this.nombre=nom;
         this.apellido=apellido;

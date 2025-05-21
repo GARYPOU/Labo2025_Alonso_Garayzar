@@ -3,9 +3,10 @@ package objetos;
 import java.util.ArrayList;
 
 public class Concesionaria {
-    private ArrayList<SistVehiculo>vehiculos;
+    private static ArrayList<SistVehiculo>vehiculos;
     public Concesionaria(){
         ArrayList<SistVehiculo>vehiculos = new ArrayList<>();
+
     }
     public Concesionaria(ArrayList<SistVehiculo>vehiculos){
         this.vehiculos=vehiculos;
@@ -23,11 +24,17 @@ public class Concesionaria {
             int bici = 0;
             int camio = 0;
             int auto = 0;
+            int descapotable = 0;
             if(v instanceof Bici){
                 bici=bici+1;
             }
             else if(v instanceof Carro){
                 auto=auto+1;
+                if(((Carro) v).carroDescapotable()){
+                    descapotable=descapotable+1;
+                }
+
+
             }
             else if(v instanceof Camioneta){
                 camio=camio+1;
@@ -40,6 +47,7 @@ public class Concesionaria {
             }
             if(auto>bici && auto>camio){
                 System.out.println("Auto");
+                System.out.println("Hay"+" "+descapotable+" "+"autos"+" "+"descapotables");
             }
 
 
@@ -49,6 +57,9 @@ public class Concesionaria {
     public static void main(String[] args) {
     SistVehiculo s1 = new SistVehiculo();
     Concesionaria c1 = new Concesionaria();
+    Camioneta camio1 = new Camioneta();
+    vehiculos.add(camio1);
+    camio1.agregarCarga(120);
     c1.masCant();
 
     }

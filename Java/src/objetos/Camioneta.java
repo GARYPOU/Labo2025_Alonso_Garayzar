@@ -15,7 +15,14 @@ public class Camioneta extends Automovil {
 
 
 
+    public void agregarCarga (int agregar){
+        if(peso+agregar>peso){
 
+        }
+        else {
+            this.peso=peso+agregar;
+        }
+    }
 
 
 
@@ -26,5 +33,6 @@ public class Camioneta extends Automovil {
         System.out.println("velocidad actual"+ c1.getVelocidad());
 
     }
+
 }
 

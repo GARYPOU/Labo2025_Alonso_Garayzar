@@ -13,12 +13,16 @@ public class Carro extends Automovil {
         descapotable=true;
     }
 
+    public boolean isDescapotable() {
+        return descapotable;
+    }
 
-
-
-
-
-
+    public void setDescapotable(boolean descapotable) {
+        this.descapotable = descapotable;
+    }
+    public boolean carroDescapotable(){
+        return descapotable;
+    }
 
     public static void main(String[] args) {
         Carro c1 = new Carro(true, "Fiat", "corola", "Rojo", 120,4,204);
