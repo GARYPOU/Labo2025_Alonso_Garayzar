@@ -4,6 +4,10 @@ public class Plato {
     private String nombre;
     private float precio;
 
+    public Plato(){
+        this.nombre="pizza";
+        this.precio=200;
+    }
     public Plato(String nombre, float precio){
         this.nombre=nombre;
         this.precio=precio;

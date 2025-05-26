@@ -8,12 +8,20 @@ import java.util.ArrayList;
 
 public class Pedido {
     private LocalDate creacion;
+    private LocalDate horaentrega;
     private ArrayList<Plato>platos;
     private Persona solicitud;
-    private LocalDate horaentrega;
     private String estado;
 
-    public Pedido(LocalDate creacion,ArrayList<Plato>platos,Persona solicitud,LocalDate horaentrega,String estado ){
+
+    public Pedido(){
+        this.creacion=LocalDate.of(2025,5,23);
+        this.horaentrega=LocalDate.of(2025,5,23);
+        this.estado="vene";
+        this.platos=new ArrayList<>();
+        this.solicitud=new Persona();
+    }
+    public Pedido(LocalDate creacion,LocalDate horaentrega,String estado,ArrayList<Plato>platos,Persona solicitud ){
         this.creacion=creacion;
         this.horaentrega=horaentrega;
         this.estado=estado;
