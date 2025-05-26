@@ -19,8 +19,6 @@ public class Persona {
         this.nacimiento=LocalDate.of(1990,7,12);
         this.fechaEmpezo=LocalDate.of(2020,11,13);
 
-
-
     }
     public Persona(String nombre){
         this.nombre=nombre;
