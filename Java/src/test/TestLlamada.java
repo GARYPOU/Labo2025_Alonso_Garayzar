@@ -34,7 +34,7 @@ public class TestLlamada {
         llamadas.add(new Llamada(e1, e2, LocalDateTime.now(), 120));
         llamadas.add(new Llamada(e1, e3, LocalDateTime.now(), 60));
         llamadas.add(new Llamada(e2, e1, LocalDateTime.now(), 300));
-        llamadas.add(new Llamada(e3, e2, LocalDateTime.now(), 180)); 
+        llamadas.add(new Llamada(e3, e2, LocalDateTime.now(), 180));
 
 
 

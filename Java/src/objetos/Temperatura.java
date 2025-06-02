@@ -8,4 +8,8 @@ public class Temperatura extends Sensor{
         super(estado, medida, adquisicion, umbralInicial);
 
     }
+    @Override
+    public void dispara(){
+        System.out.println("¡Cuidado! La temperatura sube");
+    }
 }

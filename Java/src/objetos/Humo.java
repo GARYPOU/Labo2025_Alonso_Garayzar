@@ -8,4 +8,8 @@ public class Humo extends Sensor{
         super(estado, medida, adquisicion, umbralInicial);
 
     }
+    @Override
+    public void dispara(){
+        System.out.println("Llamar a los bomberos");
+    }
 }

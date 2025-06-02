@@ -25,20 +25,24 @@ public class SistAlarmas {
             } else {
                 if (s.getMedida() > s.getUmbralInicial()) {
                     if (s instanceof Humo) {
-                        mensaje="Llamar a los bomberos";
+                        dispara();
                     } else if (s instanceof Temperatura) {
-                        mensaje="¡Cuidado! La temperatura sube";
+                        dispara();
                     } else if (s instanceof Precion) {
-                        mensaje="Sensor de presión activado";
+                        s.dispara();
                     }
                 }
             }
             System.out.println(mensaje);
         }
     }
+    public void dispara(){
+    }
 
     public static void main(String[] args) {
         SistAlarmas a1 = new SistAlarmas();
+        Sensor s1 = new Sensor();
         a1.comparar();
+
     }
 }

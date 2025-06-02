@@ -14,6 +14,12 @@ public class Sensor {
         this.adquisicion = adquisicion;
         this.umbralInicial=umbralInicial;
     }
+    public Sensor() {
+        this.estado = true;
+        this.medida = 50.0;
+        this.adquisicion = LocalDate.of(2000,3,6);
+        this.umbralInicial=60.0;
+    }
 
     public boolean getEstado() {
         return estado;
@@ -45,5 +51,9 @@ public class Sensor {
 
     public void setAdquisicion(LocalDate adquisicion) {
         this.adquisicion = adquisicion;
+    }
+
+    public void dispara(){
+
     }
 }
