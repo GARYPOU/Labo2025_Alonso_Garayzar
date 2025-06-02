@@ -1,20 +1,26 @@
 package objetos;
-
+import objetos.Computadora;
 import personas.Persona;
 
 public class Compra {
     private Persona cliente;
-    private String pago;
-    private int cant;
+    private MetodoPago pago;
+    private Computadora compu;
 
-    public Compra(Persona cliente, String pago, int cant) {
+    public Compra(Persona cliente, MetodoPago pago, Computadora compu) {
         this.cliente = cliente;
         this.pago = pago;
-        this.cant = cant;
+        this.compu=compu;
     }
     public Compra() {
         this.cliente = new Persona();
-        this.pago = "Tarjeta";
-        this.cant = 4;
+        this.pago = new MetodoPago();
+
     }
+    public double calcularTotalConMedioDePago() {
+        double base = compu.calcularPrecioNeto();
+        return pago.precioFinal(base);
+    }
+
+
 }

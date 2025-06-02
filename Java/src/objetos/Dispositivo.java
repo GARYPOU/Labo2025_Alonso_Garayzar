@@ -22,4 +22,7 @@ public class Dispositivo extends Componente{
     public void setPuertos(int puertos) {
         this.puertos = puertos;
     }
+    public void reducirStock(int cant){
+        setStock(cant);
+    }
 }

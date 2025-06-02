@@ -18,8 +18,8 @@ public class Componente {
         this.nombre=nombre;
         this.fabricante = fabricante;
         this.modelo = modelo;
-        this.precio = precio;
-        this.stock = stock;
+        this.precio = 100;
+        this.stock = 50;
     }
 
     public String getNombre() {

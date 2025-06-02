@@ -15,7 +15,7 @@ public class Sensor {
         this.umbralInicial=umbralInicial;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

@@ -8,4 +8,9 @@ public class CPU extends Componente{
     public CPU() {
         super("I7", "intel", "I7", 500000, 7);
     }
+
+    public void reducirStock(int cant){
+      setStock(cant);
+    }
+
 }
