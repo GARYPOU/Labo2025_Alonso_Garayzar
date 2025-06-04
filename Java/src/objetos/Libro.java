@@ -9,7 +9,7 @@ public class Libro {
     private String titulo;
     private int isbn;
     private int paginas;
-    private String editorial;
+    private Editorial editorial;
     private Persona autor;
     private Fecha publicacion;
 
@@ -18,14 +18,14 @@ public class Libro {
         this.titulo = "el ñobit";
         this.isbn = 12;
         this.paginas = 200;
-        this.editorial = "La Paz";
+        Editorial editorial=Editorial.ATLANTIDA;
         this.autor = new Persona();
         this.publicacion = new Fecha(1,2,2000);
 
     }
 
 
-    public Libro(Persona autor, String titulo, int isbn, int paginas, String editorial, Fecha publicacion) {
+    public Libro(Persona autor, String titulo, int isbn, int paginas, Editorial editorial, Fecha publicacion) {
         this.autor = autor;
         this.publicacion = publicacion;
         this.titulo = titulo;
@@ -35,7 +35,7 @@ public class Libro {
 
 
     }
-    public Libro( int isbn, String editorial) {
+    public Libro( int isbn, Editorial editorial) {
         this.titulo = "El hambre";
         this.isbn = isbn;
         this.editorial = editorial;
@@ -68,11 +68,11 @@ public class Libro {
         this.paginas = paginas;
     }
 
-    public String getEditorial() {
+    public Editorial getEditorial() {
         return editorial;
     }
 
-    public void setEditorial(String editorial) {
+    public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
 

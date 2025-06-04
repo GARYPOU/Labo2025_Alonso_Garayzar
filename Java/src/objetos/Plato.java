@@ -1,23 +1,23 @@
 package objetos;
 
 public class Plato {
-    private String nombre;
+    private Comida nombre;
     private float precio;
 
     public Plato(){
-        this.nombre="pizza";
+        this.nombre=Comida.CHORIZO;
         this.precio=200;
     }
-    public Plato(String nombre, float precio){
+    public Plato(Comida nombre, float precio){
         this.nombre=nombre;
         this.precio=precio;
     }
 
-    public String getNombre() {
+    public Comida getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(Comida nombre) {
         this.nombre = nombre;
     }
 

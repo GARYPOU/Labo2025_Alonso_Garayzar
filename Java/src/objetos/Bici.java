@@ -5,8 +5,8 @@ public class Bici extends SistVehiculo {
 
 
 
-    public Bici(String marca, String modelo, String color, int velocidad, int cantRuedas){
-        super(marca,modelo,color,velocidad, cantRuedas);
+    public Bici(Marca marca, String modelo, Color color, int velocidad, Rueda cantRuedas){
+        super(marca,color, modelo,velocidad, cantRuedas);
     }
     public Bici(){
         super();

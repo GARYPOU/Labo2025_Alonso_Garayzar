@@ -1,0 +1,6 @@
+package objetos;
+
+public enum Editorial {
+    KAPELUSZ,SUDAMERICANA ,ATLANTIDA, ELATENEO, INTERZONA, SUR, ALIANZA
+
+}

@@ -9,15 +9,15 @@ public class Equipo {
     private String nombre;
     private String barrio;
     private Jugador[] jugadores = new Jugador[11];
-    private String horario;
+    private Turno horario;
 
     public Equipo(){
         this.nombre="River";
         this.barrio = "Nuñes";
         this.llenarJugadores();
-        this.horario="mañana";
+        Turno horario= Turno.MAÑANA;
     }
-    public Equipo(String nombre, String barrio, Jugador[] jugadores, String horario){
+    public Equipo(String nombre, String barrio, Jugador[] jugadores, Turno horario){
         this.nombre=nombre;
         this.barrio = barrio;
         this.jugadores= jugadores;
@@ -65,11 +65,11 @@ public class Equipo {
         this.jugadores = jugadores;
     }
 
-    public String getHorario() {
+    public Turno getHorario() {
         return horario;
     }
 
-    public void setHorario(String horario) {
+    public void setHorario(Turno horario) {
         this.horario = horario;
     }
 

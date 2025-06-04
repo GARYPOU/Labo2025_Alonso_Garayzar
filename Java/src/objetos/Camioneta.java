@@ -4,7 +4,8 @@ public class Camioneta extends Automovil {
     private int peso;
 
 
-    public Camioneta(int peso, String marca, String modelo, String color, int velocidad,int cantRuedas, int patente){
+    public Camioneta(int peso, Marca marca, String modelo, Color color, int velocidad,Rueda cantRuedas, int patente){
+
         super(marca, modelo, color,velocidad, cantRuedas, patente);
         this.peso=peso;
     }
@@ -27,7 +28,7 @@ public class Camioneta extends Automovil {
 
 
     public static void main(String[] args) {
-        Camioneta c1 = new Camioneta(1900, "Fiat", "corola", "Rojo", 120, 4, 123);
+        Camioneta c1 = new Camioneta(1900, Marca.FIAT, "corola", Color.AMARILLO, 120, Rueda.CUATRORUEDAS, 123);
         System.out.println("Aceleracion="+ c1.calcacel()+"km/h2");
         System.out.println("Frenado="+ c1.calcfreno());
         System.out.println("velocidad actual"+ c1.getVelocidad());
