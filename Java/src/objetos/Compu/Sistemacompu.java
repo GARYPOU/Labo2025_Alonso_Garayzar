@@ -1,6 +1,8 @@
-package objetos;
+package objetos.Compu;
 
+import objetos.Compra;
 import personas.Persona;
+
 
 import java.util.ArrayList;
 

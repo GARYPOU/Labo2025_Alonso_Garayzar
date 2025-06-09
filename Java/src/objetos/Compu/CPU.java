@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Compu;
 
 public class CPU extends Componente{
 

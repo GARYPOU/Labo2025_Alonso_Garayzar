@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Deportes;
 import personas.Jugador;
 
 import java.util.ArrayList;

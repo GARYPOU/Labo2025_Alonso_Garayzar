@@ -1,4 +1,6 @@
-package objetos;
+package objetos.Compu;
+
+import objetos.Metodo;
 
 public class Impresora extends Dissalida{
     private boolean met;

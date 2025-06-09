@@ -1,4 +1,6 @@
-package objetos;
+package objetos.Deportes;
+
+import objetos.Deportes.Turno;
 
 import java.time.LocalDate;
 
@@ -10,7 +12,7 @@ public class Partido {
 
         public Partido(int i, int i1, int i2, String horario, String VS){
         this.fecha = LocalDate.of(2004,12,31);
-        this.turno=Turno.MAÑANA;
+        this.turno=Turno.MANANA;
         this.equiposVS="RiverVSBoca";
     }
     public Partido(LocalDate fecha, Turno turno, String equiposVS){

@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Compu;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,5 @@
-package objetos;
+package objetos.Mecanico;
+
 
 import java.util.ArrayList;
 

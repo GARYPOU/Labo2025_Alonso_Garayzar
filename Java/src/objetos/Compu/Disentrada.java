@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Compu;
 
 public class Disentrada extends Dispositivo{
     private String conector;

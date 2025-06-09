@@ -1,5 +1,5 @@
 
-package objetos;
+package objetos.Electrodomesticos;
 
 import java.util.Scanner;
 

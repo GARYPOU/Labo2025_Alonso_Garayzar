@@ -1,7 +1,8 @@
-package objetos;
+package objetos.Deportes;
 
+import objetos.Deportes.Turno;
 import personas.Jugador;
-import objetos.Partido;
+import objetos.Deportes.Partido;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class Equipo {
         this.nombre="River";
         this.barrio = "Nuñes";
         this.llenarJugadores();
-        Turno horario= Turno.MAÑANA;
+        Turno horario= Turno.MANANA;
     }
     public Equipo(String nombre, String barrio, Jugador[] jugadores, Turno horario){
         this.nombre=nombre;

@@ -1,10 +1,14 @@
-package objetos;
+package objetos.Mecanico;
+
+import objetos.Color;
+import objetos.Mecanico.Marca;
+import objetos.Mecanico.Rueda;
 
 public class Camioneta extends Automovil {
     private int peso;
 
 
-    public Camioneta(int peso, Marca marca, String modelo, Color color, int velocidad,Rueda cantRuedas, int patente){
+    public Camioneta(int peso, Marca marca, String modelo, Color color, int velocidad, Rueda cantRuedas, int patente){
 
         super(marca, modelo, color,velocidad, cantRuedas, patente);
         this.peso=peso;

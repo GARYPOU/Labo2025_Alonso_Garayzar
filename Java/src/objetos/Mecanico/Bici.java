@@ -1,4 +1,8 @@
-package objetos;
+package objetos.Mecanico;
+
+import objetos.Color;
+import objetos.Mecanico.Marca;
+import objetos.Mecanico.Rueda;
 
 public class Bici extends SistVehiculo {
 
