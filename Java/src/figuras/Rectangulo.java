@@ -36,13 +36,13 @@ public class Rectangulo extends Figura{
         this.base=bas;
     }
 
-    public float calcularareas(){
+    public float calculararea(){
         float x;
         x = (float) (this.altura*this.base);
         return x;
     }
 
-    public float calcularperis(){
+    public float calcularperi(){
         float x;
         x = (float) (2 * this.altura + 2*this.base);
         return x;
@@ -51,7 +51,7 @@ public class Rectangulo extends Figura{
 
     public static void main(String[] args) {
         Rectangulo r1 = new Rectangulo(2,3);
-        System.out.println("area="+ r1.calcularareas());
-        System.out.println("perimetro="+ r1.calcularperis());
+        System.out.println("area="+ r1.calculararea());
+        System.out.println("perimetro="+ r1.calcularperi());
     }
 }

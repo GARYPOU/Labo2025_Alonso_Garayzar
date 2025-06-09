@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Pedidos;
 
 import personas.Profesor;
 

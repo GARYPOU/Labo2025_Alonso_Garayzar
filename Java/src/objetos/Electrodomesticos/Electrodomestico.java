@@ -1,14 +1,16 @@
 package objetos.Electrodomesticos;
 
-public class Electrodomestico {
+public abstract class Electrodomestico {
     private String nombre;
     private double precio;
     private int stock;
+    private Seccion seccion;
 
-    public Electrodomestico(String nombre, double precio, int stock) {
+    public Electrodomestico(String nombre, double precio, int stock, Seccion seccion) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
+        this.seccion = seccion;
     }
     public Electrodomestico(){
         this.nombre="";

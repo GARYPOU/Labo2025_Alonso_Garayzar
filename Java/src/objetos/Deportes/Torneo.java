@@ -62,25 +62,25 @@ public class Torneo {
 
 
 }
-public void equiposMañana(String hora) {
+public void equiposMañana(Turno hora) {
     for (int i = 0; i < equipos.size(); i++) {
-        if (equipos.get(i).getHorario() == hora) {
+        if (hora.compareTo(equipos.get(i).getHorario())==0) {
             EquiposManana.add(getEquipos().get(i));
         }
 
     }
 }
-    public void equiposTarde(String hora) {
+    public void equiposTarde(Turno hora) {
         for (int i = 0; i < equipos.size(); i++) {
-            if (equipos.get(i).getHorario() == hora) {
+            if (hora.compareTo(equipos.get(i).getHorario())==1) {
                 EquiposTarde.add(getEquipos().get(i));
             }
 
         }
     }
-        public void equiposNoche(String hora) {
+        public void equiposNoche(Turno hora) {
             for (int i = 0; i < equipos.size(); i++) {
-                if (equipos.get(i).getHorario() == hora) {
+                if (hora.compareTo(equipos.get(i).getHorario())==2) {
                     EquiposNoche.add(getEquipos().get(i));
                 }
 
@@ -94,7 +94,7 @@ public ArrayList<Partido> fixture(ArrayList<Equipo>equipos) {
     for (int i = 0; i < equipos.size(); i++) {
         for (int j = 1; j <= equipos.size(); i++) {
             VS = equipos.get(i).getNombre() + "VS" + equipos.get(j + i).getNombre();
-            partidos.add(new Partido(1, 2, 2000, equipos.get(i).getHorario(), VS));
+            partidos.add(new Partido(1, 2, 2000, equipos.get(i).getHorario().name(), VS));
 
         }
     }
@@ -104,9 +104,9 @@ public ArrayList<Partido> fixture(ArrayList<Equipo>equipos) {
 
 public static void main(String[] args) {
         Torneo t1 = new Torneo();
-        t1.equiposMañana("mañana");
-        t1.equiposTarde("tarde");
-        t1.equiposNoche("noche");
+        t1.equiposMañana(Turno.MANANA);
+        t1.equiposTarde(Turno.TARDE);
+        t1.equiposNoche(Turno.NOCHE);
         t1.fixture(t1.EquiposManana);
         t1.fixture(t1.EquiposTarde);
         t1.fixture(t1.EquiposNoche);

@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Cole;
 
 public class Nota {
     private int nota;

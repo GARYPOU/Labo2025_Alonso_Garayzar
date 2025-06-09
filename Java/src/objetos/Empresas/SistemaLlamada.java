@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Empresas;
 
 import personas.Empleado;
 
@@ -74,4 +74,11 @@ public class SistemaLlamada {
         }
     }
 
+    public void setLlamadas(ArrayList<Llamada> llamadas) {
+        this.llamadas = llamadas;
+    }
+
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
 }

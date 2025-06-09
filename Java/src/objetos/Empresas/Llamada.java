@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Empresas;
 
 import personas.Empleado;
 

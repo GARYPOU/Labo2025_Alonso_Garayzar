@@ -1,5 +1,6 @@
 package test;
 import objetos.*;
+import objetos.Sensor.*;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 

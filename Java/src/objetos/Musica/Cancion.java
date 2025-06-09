@@ -1,5 +1,5 @@
 
-package objetos;
+package objetos.Musica;
 
 
 import personas.Persona;

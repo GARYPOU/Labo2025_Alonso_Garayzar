@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Libros;
 
 import Fechas.Fecha;
 import personas.Persona;

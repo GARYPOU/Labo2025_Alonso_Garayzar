@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Sensor;
 
 import java.util.ArrayList;
 

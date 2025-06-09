@@ -1,6 +1,6 @@
 package personas;
 
-import objetos.Llamada;
+import objetos.Empresas.Llamada;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

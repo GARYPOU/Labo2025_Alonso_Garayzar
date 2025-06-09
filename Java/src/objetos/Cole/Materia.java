@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Cole;
 
 import personas.Alumno;
 

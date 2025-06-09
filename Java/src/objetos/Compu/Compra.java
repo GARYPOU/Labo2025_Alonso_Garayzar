@@ -1,5 +1,6 @@
-package objetos;
-import objetos.Computadora;
+package objetos.Compu;
+import objetos.Compu.Computadora;
+import objetos.MetodoPago;
 import personas.Persona;
 
 public class Compra {

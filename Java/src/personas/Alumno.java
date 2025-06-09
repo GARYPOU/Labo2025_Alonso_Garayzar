@@ -1,7 +1,7 @@
 package personas;
 
-import objetos.Nota;
-import objetos.Materia;
+import objetos.Cole.Nota;
+import objetos.Cole.Materia;
 
 import java.time.LocalDate;
 import java.time.Period;

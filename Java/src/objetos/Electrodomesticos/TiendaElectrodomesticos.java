@@ -39,7 +39,7 @@ public class TiendaElectrodomesticos {
 
     public double masStock(){
         int masStock=0;
-        Electrodomestico eMas = new Electrodomestico();
+        Electrodomestico eMas = new Cargador();
         for (Electrodomestico e: productos){
             if(e.getStock()>eMas.getStock()){
             masStock=e.getStock();
@@ -49,7 +49,7 @@ public class TiendaElectrodomesticos {
     }
     public double minStock(){
         int minStock=0;
-        Electrodomestico eMenos = new Electrodomestico();
+        Electrodomestico eMenos = new Cargador();
         for (Electrodomestico e: productos){
             if(e.getStock()<eMenos.getStock()){
                 minStock=e.getStock();

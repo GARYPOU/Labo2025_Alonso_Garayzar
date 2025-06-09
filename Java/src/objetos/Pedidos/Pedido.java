@@ -1,5 +1,6 @@
-package objetos;
+package objetos.Pedidos;
 
+import personas.Empleado;
 import personas.Persona;
 
 import java.security.PublicKey;

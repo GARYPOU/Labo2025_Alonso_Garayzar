@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Pelis;
 
 import java.util.ArrayList;
 

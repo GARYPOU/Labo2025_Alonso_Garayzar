@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Banco;
 
 import personas.Persona;
 

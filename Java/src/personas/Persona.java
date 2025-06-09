@@ -2,7 +2,7 @@ package personas;
 
 import java.time.LocalDate;
 
-public class Persona {
+public  class Persona {
     private String nombre;
     private String apellido;
     private int direccion;
@@ -110,7 +110,7 @@ public class Persona {
 
     public String mostrardatos(){
         String x;
-        Persona p1 = new Persona();
+        Persona p1 = new Jugador();
         x = (String) ("Nombre:"+p1.nombre+" "+"Edad:"+p1.nacimiento.getYear()+"/"+p1.nacimiento.getMonth()+"/"+p1.nacimiento.getDayOfMonth()+" "+"Direccion:"+p1.direccion);
         return x;
     }
@@ -132,7 +132,7 @@ public class Persona {
 
 
     public static void main(String[] args) {
-        Persona p1 = new Persona();
+        Persona p1 = new Empleado();
         System.out.println(p1.mostrardatos());
 
     }

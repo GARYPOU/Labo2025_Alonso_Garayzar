@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Pedidos;
 
 public class Plato {
     private Comida nombre;

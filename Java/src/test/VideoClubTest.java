@@ -1,7 +1,7 @@
 package test;
-import objetos.Estanteria;
-import objetos.Pelicula;
-import objetos.Videoclub;
+import objetos.Pelis.Estanteria;
+import objetos.Pelis.Pelicula;
+import objetos.Pelis.Videoclub;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;

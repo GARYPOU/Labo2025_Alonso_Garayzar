@@ -1,7 +1,7 @@
 package test;
 
-import objetos.Llamada;
-import objetos.SistemaLlamada;
+import objetos.Empresas.Llamada;
+import objetos.Empresas.SistemaLlamada;
 import personas.Empleado;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

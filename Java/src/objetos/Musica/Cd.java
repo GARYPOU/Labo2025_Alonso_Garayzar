@@ -1,9 +1,9 @@
-package objetos;
+package objetos.Musica;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 import personas.Persona;
-import objetos.Cancion;
+import objetos.Musica.Cancion;
 
 public class Cd {
     private ArrayList<Cancion> canciones = new ArrayList<Cancion>();;

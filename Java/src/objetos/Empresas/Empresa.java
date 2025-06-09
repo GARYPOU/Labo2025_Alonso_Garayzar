@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Empresas;
 
 import personas.Empleado;
 
@@ -21,4 +21,5 @@ public class Empresa {
     }
     public void llamadasEmpleado() {
     }
+
 }

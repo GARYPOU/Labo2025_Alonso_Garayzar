@@ -1,5 +1,6 @@
 package test;
 
+import objetos.Comida;
 import objetos.Pedido;
 import objetos.Plato;
 import objetos.Sistemapedido;
@@ -17,7 +18,7 @@ public class Testpedido {
         Plato p1 = new Plato();
         Pedido pe1 = new Pedido();
         Sistemapedido s1= new Sistemapedido();
-        Plato p2 = new Plato("empanada", 23);
+        Plato p2 = new Plato(Comida.CHORIZO, 23);
         Persona per = new Persona();
         Profesor profe = new Profesor();
 
