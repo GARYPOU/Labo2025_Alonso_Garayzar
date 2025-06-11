@@ -18,5 +18,32 @@ public abstract class Receta {
         this.pasos = new ArrayList<>();
     }
 
-    abstract void realizarreceta();
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Dificultad getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Dificultad nivel) {
+        this.nivel = nivel;
+    }
+
+    public ArrayList<String> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(ArrayList<String> pasos) {
+        this.pasos = pasos;
+    }
+
+    abstract void realizarReceta();
+
+
+
 }

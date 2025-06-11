@@ -6,15 +6,35 @@ public class PlatoPrincipal extends Receta{
     private double tiempoCoccion;
     private int comensales;
 
-    public PlatoPrincipal(String nombre, Dificultad nivel, ArrayList<String> pasos, double tiempoCoccion, int comensales) {
+    public PlatoPrincipal(String nombre, Dificultad nivel, ArrayList<String>pasos, double tiempoCoccion, int comensales) {
         super(nombre, nivel, pasos);
         this.tiempoCoccion = tiempoCoccion;
         this.comensales = comensales;
     }
-    public void realizarreceta(){
+
+
+    @Override
+    public void realizarReceta(){
         System.out.println("Esta receta tarda"+""+tiempoCoccion);
-        for(int i=0; i<pasos.size(); i++){
-            System.out.println(pasos.get(i));
+        System.out.println("Los pasos a seguir son");
+        for(int i=0; i<getPasos().size(); i++){
+            System.out.println(getPasos().get(i));
         }
+    }
+
+    public double getTiempoCoccion() {
+        return tiempoCoccion;
+    }
+
+    public void setTiempoCoccion(double tiempoCoccion) {
+        this.tiempoCoccion = tiempoCoccion;
+    }
+
+    public int getComensales() {
+        return comensales;
+    }
+
+    public void setComensales(int comensales) {
+        this.comensales = comensales;
     }
 }
