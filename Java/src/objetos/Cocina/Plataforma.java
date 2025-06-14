@@ -1,4 +1,4 @@
-package objetos.Cocina;
+package objetos;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,10 @@ public class Plataforma {
 
     public Plataforma(ArrayList<Receta> recetas) {
         this.recetas = recetas;
+
+    }
+    public Plataforma() {
+        this.recetas = new ArrayList<>();
 
     }
 
@@ -51,8 +55,8 @@ public class Plataforma {
                 entradas.add(r);
             }
             else{
-                    postres.add(r);
-                }
+                postres.add(r);
+            }
         }
         for(Receta r: platosPiolas){
             System.out.println("Los platos principales son:"+r.getNombre());
@@ -89,6 +93,20 @@ public class Plataforma {
         return recetas.get(indice);
     }
 
-
+    public static void main(String[] args) {
+        Plataforma p1 = new Plataforma();
+        Postre pos1 = new Postre();
+        PlatoPrincipal pla1 = new PlatoPrincipal();
+        Entrada ent1 = new Entrada();
+        p1.agregarReceta(pos1);
+        p1.agregarReceta(pla1);
+        p1.agregarReceta(ent1);
+        p1.borrarReceta(pos1);
+        p1.modificarReceta(pos1,1);
+        p1.agregarReceta(pla1);
+        p1.buscarReceta(Dificultad.MEDIO);
+        p1.filtrarRecetas();
+        System.out.println("hay"+p1.cantRecetas()+"recetas");
+        System.out.println("La receta con mas pasos es:"+p1.recetaMasPasos().getNombre());
+    }
 }
-
