@@ -9,7 +9,7 @@ public class Shop
         public static void main(String[] args) {
             double tax = 0.2;
             double total;
-           Persona c1 = new Persona();
+           Customer c1 = new Customer();
            c1.setNombre("pinky");
            System.out.println("Hello"+c1.getNombre());
            Clothing item1 = new Clothing("Blue Jacket", 20.9, "M");

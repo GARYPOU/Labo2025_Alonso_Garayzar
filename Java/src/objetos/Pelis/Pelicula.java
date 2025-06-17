@@ -1,5 +1,6 @@
 package objetos.Pelis;
 
+import personas.Customer;
 import personas.Empleado;
 import personas.Persona;
 
@@ -105,7 +106,7 @@ public class Pelicula {
 
     public static void main(String[] args) {
         Pelicula p1 = new Pelicula();
-        Persona per1 = new Persona();
+        Customer per1 = new Customer();
         p1.agregar(per1,per1,"ingles");
         p1.borrar(per1,per1,"ingles");
         p1.modificar(per1,1,per1,1,"ingles",1);

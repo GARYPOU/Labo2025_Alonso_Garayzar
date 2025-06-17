@@ -2,7 +2,7 @@ package objetos.Sensor;
 
 import java.time.LocalDate;
 
-public class Sensor {
+public abstract class Sensor {
     private boolean estado;
     private double medida;
     private LocalDate adquisicion;

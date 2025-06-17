@@ -4,7 +4,7 @@ import objetos.Color;
 import objetos.Mecanico.Marca;
 import objetos.Mecanico.Rueda;
 
-public class Automovil extends SistVehiculo{
+public abstract class Automovil extends SistVehiculo{
 
     private int patente;
 

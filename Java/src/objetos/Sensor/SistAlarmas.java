@@ -41,7 +41,6 @@ public class SistAlarmas {
 
     public static void main(String[] args) {
         SistAlarmas a1 = new SistAlarmas();
-        Sensor s1 = new Sensor();
         a1.comparar();
 
     }

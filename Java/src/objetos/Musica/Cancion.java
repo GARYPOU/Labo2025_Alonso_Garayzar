@@ -2,6 +2,7 @@
 package objetos.Musica;
 
 
+import personas.Customer;
 import personas.Persona;
 
 public class Cancion {
@@ -12,7 +13,7 @@ public class Cancion {
 
     public Cancion() {
       this.titulo="";
-      this.autor=new Persona();
+      this.autor=new Customer();
 
     }
 

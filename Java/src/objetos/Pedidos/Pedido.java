@@ -1,5 +1,6 @@
 package objetos.Pedidos;
 
+import personas.Customer;
 import personas.Empleado;
 import personas.Persona;
 
@@ -20,7 +21,7 @@ public class Pedido {
         this.horaentrega=LocalDate.of(2025,5,23);
         this.estado="vene";
         this.platos=new ArrayList<>();
-        this.solicitud=new Persona();
+        this.solicitud=new Customer();
     }
     public Pedido(LocalDate creacion,LocalDate horaentrega,String estado,ArrayList<Plato>platos,Persona solicitud ){
         this.creacion=creacion;

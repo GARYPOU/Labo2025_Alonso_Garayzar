@@ -2,6 +2,8 @@ package objetos.Musica;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import personas.Customer;
 import personas.Persona;
 import objetos.Musica.Cancion;
 
@@ -10,7 +12,7 @@ public class Cd {
 
     public Cd() {
 
-        this.canciones.add (new Cancion("La quinta sinfonia", new Persona()));
+        this.canciones.add (new Cancion("La quinta sinfonia", new Customer()));
 
     }
 
@@ -71,10 +73,10 @@ public class Cd {
         Cd c1 = new Cd();
         Cancion c2 = new Cancion();
         Cancion c3 = new Cancion();
-        c1.canciones.add(new Cancion("Shake it off", new Persona()));
-        c1.canciones.add(new Cancion("Enemy", new Persona()));
-        c2=new Cancion("Fanatico", new Persona());
-        c3=new Cancion("Frozen", new Persona());
+        c1.canciones.add(new Cancion("Shake it off", new Customer()));
+        c1.canciones.add(new Cancion("Enemy", new Customer()));
+        c2=new Cancion("Fanatico", new Customer());
+        c3=new Cancion("Frozen", new Customer());
         c1.cantCanciones(cant);
         c1.mostrarCancion();
         c1.grabarCancion(c2);
