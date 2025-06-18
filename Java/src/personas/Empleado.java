@@ -55,4 +55,5 @@ public class Empleado extends Persona{
     public void setLlamadas(ArrayList<Llamada> llamadas) {
         this.llamadas = llamadas;
     }
+
 }
