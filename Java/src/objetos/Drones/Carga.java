@@ -1,5 +1,5 @@
 package objetos.Drones;
-
+import objetos.Drones.Distancia;
 import java.time.LocalDate;
 
 public class Carga extends Dron {
@@ -9,7 +9,7 @@ public class Carga extends Dron {
         super(nombre, fecha, bateria, id, estado);
     }
     public int disminuirBat(){
-        setBateria(getBateria()-48);
+        setBateria(getBateria()-50);
         if(getBateria()<0){
             return getBateria();
         }
@@ -19,11 +19,10 @@ public class Carga extends Dron {
     }
 
     @Override
-    boolean completarMision() {
-        double longitudDestino=0;
-        double latitudDestino=0;
-        double calcular = calcular(longitudDestino, latitudDestino);
-        if (calcular <= 30) {
+    boolean completarMision(double longitudDestino, double latitudDestino) {
+        double calculars;
+        calculars = Distancia.calcular(longitudDestino,latitudDestino);
+        if (calculars <= 30) {
             if(0>disminuirBat()){
                 return false;
             }

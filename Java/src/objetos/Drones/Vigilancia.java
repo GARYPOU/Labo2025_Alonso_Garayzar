@@ -1,5 +1,6 @@
 package objetos.Drones;
 
+import javax.swing.plaf.IconUIResource;
 import java.time.LocalDate;
 
 public class Vigilancia extends Dron{
@@ -11,8 +12,17 @@ public class Vigilancia extends Dron{
 
 
     @Override
-    boolean completarMision() {
-        return false;
+    boolean completarMision(double longitudDestino, double latitudDestino) {
+        double calculars=Distancia.calcular(longitudDestino,latitudDestino);
+        double total=calculars*2;
+        if((memoria-total)<0){
+
+            System.out.println("No puede completar la mision");
+            return false;
+        }
+        System.out.println("Pudo completar la mision");
+        return true;
+
     }
 
 }
