@@ -4,7 +4,9 @@ public abstract class Mascota extends Animal{
     private String nombre;
     private String dueño;
     private Saludo saludo;
-    private static int alegria = 1;
+    private static int alegriaInicial = 1;
+    private int alegria=alegriaInicial;
+
 
     public Mascota(String nombre, String dueño, Saludo saludo, int alegria) {
         this.nombre = nombre;
@@ -12,19 +14,10 @@ public abstract class Mascota extends Animal{
         this.saludo = saludo;
         this.alegria = alegria;
     }
-
-    public Mascota(String nombre, String dueño) {
+    public Mascota(String nombre, String dueño, int alegria) {
         this.nombre = nombre;
         this.dueño = dueño;
-    }
-
-
-    public static int getAlegria() {
-        return alegria;
-    }
-
-    public static void setAlegria(int alegria) {
-        Mascota.alegria = alegria;
+        this.alegria = alegria;
     }
 
     public String getNombre() {
@@ -51,6 +44,23 @@ public abstract class Mascota extends Animal{
         this.saludo = saludo;
     }
 
+    public static int getAlegriaInicial() {
+        return alegriaInicial;
+    }
 
-    abstract Saludo saludar();
+    public static void setAlegriaInicial(int alegriaInicial) {
+        Mascota.alegriaInicial = alegriaInicial;
+    }
+
+    public int getAlegria() {
+        return alegria;
+    }
+
+    public void setAlegria(int alegria) {
+        this.alegria = alegria;
+    }
+
+    abstract String saludar(String nombre, String dueño);
+    abstract void alimentar();
+
 }

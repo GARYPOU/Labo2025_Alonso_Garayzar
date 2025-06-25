@@ -28,5 +28,14 @@ public class SistAnimal {
     public void agregarMascota(Mascota m, int pos){
         mascotas.set(pos, m);
     }
-
+    public void borrarPez(){
+        for(Mascota m: mascotas){
+            if(m instanceof Pez){
+                if(((Pez) m).chequear()){
+                    System.out.println("se murio");
+                    mascotas.remove(m);
+                }
+            }
+        }
+    }
 }

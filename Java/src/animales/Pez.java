@@ -1,24 +1,66 @@
 package animales;
 
-public class Pez extends Mascota{
-    private static int vidas = 10;
+public class Pez extends Mascota {
+    private static int vidasTotales = 10;
+    private int vidas;
 
 
-    public Pez(String nombre, String dueño) {
-        super(nombre, dueño);
+    public Pez(String nombre, String dueño, int alegria) {
+        super(nombre, dueño, alegria);
+        this.vidas = vidasTotales;
     }
 
+    public static int getVidasTotales() {
+        return vidasTotales;
+    }
 
+    public static void setVidasTotales(int vidasTotales) {
+        Pez.vidasTotales = vidasTotales;
+    }
 
-    public static int getVidas() {
+    public int getVidas() {
         return vidas;
     }
 
-    public static void setVidas(int vidas) {
-        Pez.vidas = vidas;
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
+
     @Override
-    Saludo saludar() {
-        return null;
+    String saludar(String nombre, String dueño) {
+        if (nombre.equals(getNombre()) && dueño.equals(getDueño())) {
+            vidas = vidas - 1;
+            return "perdio una vida";
+
+
+        } else {
+            vidas = 0;
+            return "se quedo sin vidas";
+
+        }
     }
+
+    @Override
+    void alimentar() {
+        int vidin=getVidas()+1;
+        setVidas(vidin);
+    }
+
+    public boolean chequear(){
+        if(vidas<=0){
+
+            return true;
+        }
+        else{
+
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Pez p1 = new Pez("juan","juan",1);
+
+
+    }
+
 }

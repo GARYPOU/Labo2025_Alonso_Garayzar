@@ -2,7 +2,7 @@ package animales;
 
 public class Pajaro extends Mascota{
     private boolean cantor;
-    private String canto;
+    private static String canto=Saludo.PIO.getSaludo();
     public Pajaro(String nombre, String dueño, Saludo saludo, int alegria) {
         super(nombre, dueño, saludo, alegria);
     }
@@ -22,9 +22,40 @@ public class Pajaro extends Mascota{
         }
 
     }
-    @Override
-    Saludo saludar() {
-        return getSaludo();
+    public void chequearAlegria(){
+        if(getAlegria()<=0){
+            setAlegria(1);
+        }
     }
+
+    @Override
+    String saludar(String nombre, String dueño) {
+        if(nombre.equals(getNombre()) && dueño.equals(getDueño())){
+            String cantos=" ";
+            int cont=1;
+            while(cont<getAlegria()){
+                cantos=cantos+canto;
+                cont++;
+            }
+            int ale=getAlegria()-1;
+            setAlegria(ale);
+            chequearAlegria();
+            return cantos;
+
+
+        }
+        else{
+            return "";
+        }
+
+    }
+
+    @Override
+    void alimentar() {
+        int ale=getAlegria()+1;
+        setAlegria(ale);
+    }
+
+
 
 }
