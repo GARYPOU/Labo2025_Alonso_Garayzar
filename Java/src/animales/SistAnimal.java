@@ -25,9 +25,10 @@ public class SistAnimal {
     public void agregarMascota(Mascota m){
         mascotas.add(m);
     }
-    public void agregarMascota(Mascota m, int pos){
+    public void modificarMascota(Mascota m, int pos){
         mascotas.set(pos, m);
     }
+
     public void borrarPez(){
         for(Mascota m: mascotas){
             if(m instanceof Pez){
@@ -37,5 +38,34 @@ public class SistAnimal {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Pez pescado = new Pez();
+        Gato gatin = new Gato();
+        Perro perrin = new Perro();
+        Pajaro pajarin = new Pajaro();
+        SistAnimal s = new SistAnimal();
+        gatin.chequearAlegria();
+        perrin.chequearAlegria();
+        pajarin.chequearAlegria();
+        s.mostrarDatos();
+        s.agregarMascota(pescado);
+        s.agregarMascota(perrin);
+        s.agregarMascota(gatin);
+        s.borrarMascota(gatin);
+        s.agregarMascota(gatin);
+        s.agregarMascota(pajarin);
+        s.modificarMascota(perrin,0);
+        s.modificarMascota(pescado,1);
+        System.out.println(perrin.saludar("Teo","Gary"));
+        System.out.println(perrin.saludar("Teor","Gary"));
+        pajarin.cantor("cocoroco");
+        System.out.println(pajarin.saludar("Jaime","Juan"));
+        pescado.saludar("Pepe","Juan");
+        pescado.alimentar();
+        System.out.println(pescado.getVidas());
+        pescado.saludar("Pepe","J");
+
     }
 }

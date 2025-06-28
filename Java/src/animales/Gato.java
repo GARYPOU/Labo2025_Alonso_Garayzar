@@ -5,6 +5,10 @@ public class Gato extends Mascota {
     public Gato(String nombre, String dueño, Saludo saludo, int alegria) {
         super(nombre, dueño, saludo, alegria);
     }
+    public Gato() {
+        super("Pope","Romina",Saludo.MIAU,0);
+
+    }
     public void chequearAlegria(){
         if(getAlegria()<=0){
             setAlegria(1);
@@ -16,7 +20,7 @@ public class Gato extends Mascota {
         String saludin=" ";
         int cont=1;
         while(cont<getAlegria()){
-            saludin=saludin+Saludo.MIAU;
+            saludin=saludin+getSaludo();
             cont++;
         }
         if (nombre.equals(getNombre()) && dueño.equals(getDueño())) {
@@ -25,6 +29,10 @@ public class Gato extends Mascota {
             String saludini = saludin.toUpperCase()+"!";
             return saludini;
         }
+    }
+    @Override
+    String obtenerClase() {
+        return "Gato";
     }
 
     @Override

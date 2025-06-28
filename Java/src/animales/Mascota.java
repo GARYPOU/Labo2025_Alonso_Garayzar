@@ -62,5 +62,5 @@ public abstract class Mascota extends Animal{
 
     abstract String saludar(String nombre, String dueño);
     abstract void alimentar();
-
+    abstract String obtenerClase();
 }

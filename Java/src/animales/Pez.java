@@ -9,6 +9,14 @@ public class Pez extends Mascota {
         super(nombre, dueño, alegria);
         this.vidas = vidasTotales;
     }
+    public Pez() {
+        super("Pepe","Juan",0);
+        this.vidas = vidasTotales;
+    }
+
+
+
+
 
     public static int getVidasTotales() {
         return vidasTotales;
@@ -46,6 +54,11 @@ public class Pez extends Mascota {
         setVidas(vidin);
     }
 
+    @Override
+    String obtenerClase() {
+        return "Pez";
+    }
+
     public boolean chequear(){
         if(vidas<=0){
 
@@ -62,5 +75,6 @@ public class Pez extends Mascota {
 
 
     }
+
 
 }
