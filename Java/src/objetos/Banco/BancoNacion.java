@@ -1,5 +1,6 @@
 package objetos.Banco;
 
+import personas.Customer;
 import personas.Persona;
 
 import java.time.LocalDate;
@@ -24,7 +25,7 @@ public class BancoNacion {
         this.trabajadores=new ArrayList<>();
     }
     public void agregarTrabajador(Persona trabajador) {
-        Persona p1 = new Persona();
+        Persona p1 = new Customer();
 
         trabajadores.add(trabajador);
     }

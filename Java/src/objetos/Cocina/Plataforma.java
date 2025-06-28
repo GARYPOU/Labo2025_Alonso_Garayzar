@@ -1,4 +1,4 @@
-package objetos;
+package objetos.Cocina;
 
 import java.util.ArrayList;
 

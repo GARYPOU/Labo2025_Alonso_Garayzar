@@ -1,6 +1,7 @@
 package objetos.Compu;
 import objetos.Compu.Computadora;
 import objetos.MetodoPago;
+import personas.Customer;
 import personas.Persona;
 
 public class Compra {
@@ -8,13 +9,13 @@ public class Compra {
     private MetodoPago pago;
     private Computadora compu;
 
-    public Compra(Persona cliente, MetodoPago pago, Computadora compu) {
+    public Compra(Customer cliente, MetodoPago pago, Computadora compu) {
         this.cliente = cliente;
         this.pago = pago;
         this.compu=compu;
     }
     public Compra() {
-        this.cliente = new Persona();
+        this.cliente = new Customer();
         this.pago = new MetodoPago();
 
     }

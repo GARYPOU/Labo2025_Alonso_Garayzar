@@ -1,6 +1,7 @@
 package objetos.Libros;
 
 import Fechas.Fecha;
+import personas.Customer;
 import personas.Persona;
 
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Libro {
     private int isbn;
     private int paginas;
     private Editorial editorial;
-    private Persona autor;
+    private Customer autor;
     private Fecha publicacion;
 
 
@@ -19,13 +20,13 @@ public class Libro {
         this.isbn = 12;
         this.paginas = 200;
         Editorial editorial=Editorial.ATLANTIDA;
-        this.autor = new Persona();
+        this.autor = new Customer();
         this.publicacion = new Fecha(1,2,2000);
 
     }
 
 
-    public Libro(Persona autor, String titulo, int isbn, int paginas, Editorial editorial, Fecha publicacion) {
+    public Libro(Customer autor, String titulo, int isbn, int paginas, Editorial editorial, Fecha publicacion) {
         this.autor = autor;
         this.publicacion = publicacion;
         this.titulo = titulo;
@@ -80,7 +81,7 @@ public class Libro {
         return autor;
     }
 
-    public void setAutor(Persona autor) {
+    public void setAutor(Customer autor) {
         this.autor = autor;
     }
 

@@ -11,6 +11,11 @@ public class PlatoPrincipal extends Receta{
         this.tiempoCoccion = tiempoCoccion;
         this.comensales = comensales;
     }
+    public PlatoPrincipal() {
+        super("xd", Dificultad.AVANZADO, new ArrayList<>());
+        this.tiempoCoccion = 1;
+        this.comensales = 22;
+    }
 
 
     @Override
