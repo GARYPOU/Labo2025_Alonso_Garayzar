@@ -1,4 +1,5 @@
 package algoritmos;
+import personas.Customer;
 import personas.Persona;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class Array {
         palabras.add("Feli");
         palabras.add("Jorge");
         palabras.add("Feñi");
-        personas.add(new Persona());
+        personas.add(new Customer());
         for(int i=0; i<numeros.size(); i++){
             total = total + numeros.get(i);
     }
