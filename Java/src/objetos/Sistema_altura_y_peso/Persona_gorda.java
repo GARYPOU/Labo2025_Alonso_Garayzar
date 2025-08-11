@@ -8,14 +8,34 @@ import java.util.Map;
 
 public class Persona_gorda extends Persona {
     private HashMap<LocalDate,Medicion> medicion;
-    private int peso;
-    private int altura;
 
-    public Persona_gorda(String nom, String apellido, LocalDate nacimiento, HashMap<LocalDate, Medicion> medicion, int peso, int altura) {
-        super(nom, apellido, nacimiento);
+    public Persona_gorda(String nom, String apellido, int direccion, LocalDate nacimiento, HashMap<LocalDate, Medicion> medicion) {
+        super(nom, apellido, direccion, nacimiento);
         this.medicion = medicion;
-        this.peso = peso;
-        this.altura = altura;
+    }
+
+
+    public Persona_gorda() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        super("Toilet", "Gary", LocalDate.now());
+        this.medicion = new HashMap<>();
     }
 
     public HashMap<LocalDate, Medicion> getMedicion() {
@@ -26,21 +46,6 @@ public class Persona_gorda extends Persona {
         this.medicion = medicion;
     }
 
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
-
-    public int getAltura() {
-        return altura;
-    }
-
-    public void setAltura(int altura) {
-        this.altura = altura;
-    }
 
     public void saber_pesoyaltura(LocalDate fecha1, Persona_gorda p1){
         for (Map.Entry<LocalDate,Medicion>map: medicion.entrySet()){
@@ -64,6 +69,42 @@ public class Persona_gorda extends Persona {
         prompeso=prompeso/cantmedidas;
         promaltura=promaltura/cantmedidas;
         System.out.println("el promedio de peso es: "+prompeso+"y la altura es: "+promaltura);
+    }
+
+    public double porcentaje(LocalDate fecha1, LocalDate fecha2){
+        int alt1 = 0;
+        int alt2 = 0;
+        int dif = 0;
+        for(Map.Entry<LocalDate,Medicion>map: medicion.entrySet()){
+            if(fecha1.isBefore(fecha2)){
+                if(map.getKey().isEqual(fecha1)){
+                    alt1 = map.getValue().getAltura();
+                }
+                if(map.getKey().isEqual(fecha2)){
+                    alt2 = map.getValue().getAltura();
+                }
+
+            }
+            if(fecha2.isBefore(fecha1)){
+                if(map.getKey().isEqual(fecha2)){
+                    alt1 = map.getValue().getAltura();
+                }
+                if(map.getKey().isEqual(fecha1)){
+                    alt2 = map.getValue().getAltura();
+                }
+
+            }
+
+            dif = (alt2-alt1)/2;
+        }
+        return dif;
+    }
+
+    public static void main(String[] args) {
+        LocalDate f1 = LocalDate.now();
+        LocalDate f2 = LocalDate.of(1001,1,22);
+        Persona_gorda p1 = new Persona_gorda();
+        System.out.println("El promedio de las mediciones de las dos fechas fue:"+p1.porcentaje(f1,f2));
     }
 
 }
