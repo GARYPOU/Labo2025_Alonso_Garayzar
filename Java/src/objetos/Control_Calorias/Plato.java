@@ -13,6 +13,12 @@ public class Plato {
         this.cantCalorias = cantCalorias;
     }
 
+    public Plato() {
+        this.nombre = "felipe";
+        this.ingredientes = new ArrayList<>();
+        this.cantCalorias = 20;
+    }
+
     public String getNombre() {
         return nombre;
     }

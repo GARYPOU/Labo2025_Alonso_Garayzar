@@ -9,6 +9,10 @@ public class Familia {
         this.parientes = parientes;
     }
 
+    public Familia() {
+        this.parientes = new HashSet<>();
+    }
+
     public HashSet<Pariente> getParientes() {
         return parientes;
     }
@@ -55,5 +59,17 @@ public class Familia {
             }
         }
         return pa;
+    }
+
+    public static void main(String[] args) {
+        Pariente p1 = new Pariente();
+        Plato pl1 = new Plato();
+        Familia f1 = new Familia();
+
+        p1.comer(pl1);
+        p1.antiguedad();
+        f1.cantCalorias();
+        f1.masCalorias();
+        f1.menosCalorias();
     }
 }
