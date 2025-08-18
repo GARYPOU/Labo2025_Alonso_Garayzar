@@ -30,7 +30,7 @@ public class Pariente extends Persona {
     public double cantCalorias(){
         double total=0;
         for(Plato p: platos){
-            total+=p.getCantCalorias();
+            total=p.cantIngrdientes();
         }
         return total;
     }

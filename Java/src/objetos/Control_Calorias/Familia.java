@@ -29,15 +29,12 @@ public class Familia {
         return total;
     }
     public Pariente masCalorias(){
-        double cantCalo=0;
+        double cantCalo=1000000000;
         Pariente pa= new Pariente();
         for (Pariente p:parientes){
-            for (Plato pl: p.getPlatos()){
-
-                if(cantCalo<pl.getCantCalorias()){
-                    pa=p;
-                    cantCalo= pl.getCantCalorias();
-                }
+            if(p.cantCalorias()>cantCalo){
+                cantCalo=p.cantCalorias();
+                pa=p;
 
 
             }
@@ -45,15 +42,12 @@ public class Familia {
         return pa;
     }
     public Pariente menosCalorias(){
-        double cantCalo=0;
+        double cantCalo=1000000000;
         Pariente pa= new Pariente();
         for (Pariente p:parientes){
-            for (Plato pl: p.getPlatos()){
-
-                if(cantCalo>pl.getCantCalorias()){
-                    pa=p;
-                    cantCalo= pl.getCantCalorias();
-                }
+            if(p.cantCalorias()<cantCalo){
+                cantCalo=p.cantCalorias();
+                pa=p;
 
 
             }
