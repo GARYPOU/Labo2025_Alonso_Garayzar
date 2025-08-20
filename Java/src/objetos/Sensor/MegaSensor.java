@@ -7,8 +7,14 @@ public class MegaSensor extends Sensor{
     private Temperatura tempe;
     private Precion precio;
 
-    public MegaSensor(boolean estado, double medida, LocalDate adquisicion, double umbralInicial, Humo humin, Temperatura tempe, Precion precio) {
-        super(estado, medida, adquisicion, umbralInicial);
+    public MegaSensor(boolean estado, double medida, LocalDate adquisicion, double umbralInicial, String nombre, Humo humin, Temperatura tempe, Precion precio) {
+        super(estado, medida, adquisicion, umbralInicial, nombre);
+        this.humin = humin;
+        this.tempe = tempe;
+        this.precio = precio;
+    }
+
+    public MegaSensor(Humo humin, Temperatura tempe, Precion precio) {
         this.humin = humin;
         this.tempe = tempe;
         this.precio = precio;
