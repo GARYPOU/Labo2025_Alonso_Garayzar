@@ -5,7 +5,7 @@ public enum Saludo {
 
     private final String saludos;
 
-    private Saludo(String saludo) {
+    Saludo(String saludo) {
         this.saludos = saludo;
     }
 
