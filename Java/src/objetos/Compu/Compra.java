@@ -23,6 +23,13 @@ public class Compra {
         double base = compu.calcularPrecioNeto();
         return pago.precioFinal(base);
     }
+    public void verificarComponentes() throws ExcepcionesCompu {
+        if (compu.getProcesador() == null) throw new ExcepcionesCompu ("Falta la CPU");
+        if (compu.getDispositivos().size() <=0) throw new ExcepcionesCompu("Falta un dispositivo");
+
+    }
+
+
 
 
 }

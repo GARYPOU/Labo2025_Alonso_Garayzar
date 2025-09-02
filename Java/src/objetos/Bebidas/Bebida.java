@@ -2,6 +2,7 @@ package objetos.Bebidas;
 
 public abstract class Bebida{
    private String nombre;
+   private int cantidad;
    private int positividad;
    private int negatividad;
 
@@ -42,5 +43,14 @@ public abstract class Bebida{
     public void setNegatividad(int negatividad) {
         this.negatividad = negatividad;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     abstract int calcularCoficiente();
 }

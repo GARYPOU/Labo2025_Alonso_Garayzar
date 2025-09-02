@@ -10,6 +10,23 @@ public class Computadora {
         this.dispositivos=new ArrayList<>();
         this.procesador=procesador;
     }
+
+    public ArrayList<Dispositivo> getDispositivos() {
+        return dispositivos;
+    }
+
+    public void setDispositivos(ArrayList<Dispositivo> dispositivos) {
+        this.dispositivos = dispositivos;
+    }
+
+    public CPU getProcesador() {
+        return procesador;
+    }
+
+    public void setProcesador(CPU procesador) {
+        this.procesador = procesador;
+    }
+
     public Computadora(CPU cpu, ArrayList<Dispositivo> dispositivos) {
         if (cpu == null) throw new IllegalArgumentException("Debe incluir una CPU");
         boolean tienePuertosEntrada = false;

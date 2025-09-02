@@ -26,6 +26,9 @@ public class Bar {
 
     }
     public Bebedor mejorCoeficiente(){
+        if (bebedores.isEmpty()){
+            throw new PersonaNoRegistradaException("No hay personas registradas");
+        }
         Bebedor beb = new Bebedor();
         for(Bebedor b : bebedores){
             if(b.getCoeficienteHidratacion()>beb.getCoeficienteHidratacion()){
@@ -35,6 +38,10 @@ public class Bar {
         return beb;
     }
     public Bebedor peorCoeficiente(){
+        if (bebedores.isEmpty()){
+            throw new PersonaNoRegistradaException("No hay personas registradas");
+        }
+
         Bebedor beb = new Bebedor();
         for(Bebedor b : bebedores){
             if(b.getCoeficienteHidratacion()<beb.getCoeficienteHidratacion()){
@@ -49,7 +56,10 @@ public class Bar {
         for (Bebida b : bebidas){
             System.out.println(cont+")"+b.getNombre());
             cont=cont+1;
-
+            
+            if(b.getCantidad()>cant){
+                throw new SinStockException("No hay suficientes bebidas");
+            }
 
 
         }
@@ -58,6 +68,15 @@ public class Bar {
         return bebidas.get(pos);
 
 
+    }
+
+    public void agregarBebedor(Bebedor nuevo) throws DniDuplicadoException {
+        for (Bebedor b : bebedores) {
+            if (b.getDni() == nuevo.getDni()) {
+                throw new DniDuplicadoException("Ya existe una persona con el DNI " + nuevo.getDni());
+            }
+        }
+        bebedores.add(nuevo);
     }
     public int cantBebidas(int cant){
         return cant;
