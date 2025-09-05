@@ -33,22 +33,29 @@ public class Server {
 
                 String mensaje = new String(paquete.getData(), 0, paquete.getLength());
                 System.out.println("Agente dice: " + mensaje);
-
-            while (true) {
+            boolean b=true;
+            while (b) {
                 String respuesta = mensaje;
+
                 byte[] datosRespuesta = respuesta.getBytes();
                 for (Map.Entry<InetAddress,Integer> d : Direcciones.entrySet()){
 
                     DatagramPacket paqueteRespuesta = new DatagramPacket(
                             datosRespuesta, datosRespuesta.length, d.getKey(), d.getValue()
                     );
-                    Thread.sleep(5000);
 
+                    Hilo h1=new Hilo(paqueteRespuesta,socket);
                     socket.send(paqueteRespuesta);
+                    h1.start();
+                    System.out.println("ejecutando...");
 
 
 
                     socket.receive(paquete);
+                    if (paquete.getPort()==d.getValue()){
+                        b=false;
+                        h1.join();
+                    }
 
                     String mensaje2 = new String(paquete.getData(), 0, paquete.getLength());
                     System.out.println("Mensaje: " + mensaje2);
@@ -57,6 +64,7 @@ public class Server {
 
 
                     }
+                break;
         }
         } catch (Exception e) {
             e.printStackTrace();

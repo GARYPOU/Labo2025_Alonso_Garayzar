@@ -8,8 +8,7 @@ import java.net.InetAddress;
 import java.util.Scanner;
 
 
-public class Cliente2 {
-
+public class Cliente2{
 
     public static void main(String[] args) {
         int puertoLocal = 5002;   // puerto donde este cliente escucha
@@ -20,7 +19,6 @@ public class Cliente2 {
             DatagramSocket socket = new DatagramSocket(puertoLocal);
             InetAddress direccion = InetAddress.getByName(hostDestino);
 
-            // Hilo receptor
             Thread receptor = new Thread(() -> {
                 byte[] buffer = new byte[1024];
                 while (true) {
