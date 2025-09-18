@@ -7,6 +7,9 @@ public class Server extends Thread{
     private static final int PUERTO_SERVIDOR = 5000;
     private static final int PUERTO_CLIENTE1 = 6001;
     private static final int PUERTO_CLIENTE2 = 6002;
+    private static final String IP_CLIENTE1 = "192.168.1.11";
+    private static final String IP_CLIENTE2 = "192.168.1.12";
+
 
     private static final HashMap<Integer, Boolean> ackRecibidos = new HashMap<>();
 
@@ -22,8 +25,8 @@ public class Server extends Thread{
             System.out.println("Servidor: Mensaje recibido del Agente: " + mensaje);
             ackRecibidos.put(PUERTO_CLIENTE1, false);
             ackRecibidos.put(PUERTO_CLIENTE2, false);
-            new Thread(() -> manejarCliente(socketServidor, mensaje, PUERTO_CLIENTE1)).start();
-            new Thread(() -> manejarCliente(socketServidor, mensaje, PUERTO_CLIENTE2)).start();
+            new Thread(() -> manejarCliente(socketServidor, mensaje,IP_CLIENTE1, PUERTO_CLIENTE1)).start();
+            new Thread(() -> manejarCliente(socketServidor, mensaje,IP_CLIENTE2, PUERTO_CLIENTE2)).start();
             while (!ackRecibidos.get(PUERTO_CLIENTE1) || !ackRecibidos.get(PUERTO_CLIENTE2)) {
                 DatagramPacket respuesta = new DatagramPacket(new byte[1024], 1024);
                 socketServidor.receive(respuesta);
@@ -43,9 +46,9 @@ public class Server extends Thread{
         }
     }
 
-    private static void manejarCliente(DatagramSocket socket, String mensaje, int puertoCliente) {
+    private static void manejarCliente(DatagramSocket socket, String mensaje, String ipCliente, int puertoCliente) {
         try {
-            InetAddress direccion = InetAddress.getByName("localhost");
+            InetAddress direccion = InetAddress.getByName(ipCliente);
             byte[] datos = mensaje.getBytes();
 
             while (!ackRecibidos.get(puertoCliente)) {
