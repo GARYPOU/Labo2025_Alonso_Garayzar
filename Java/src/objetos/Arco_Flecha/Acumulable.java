@@ -1,4 +1,4 @@
-package Arco_Flecha;
+package objetos.Arco_Flecha;
 
 public interface Acumulable {
     int descuentoExtra();

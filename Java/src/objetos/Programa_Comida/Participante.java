@@ -10,7 +10,6 @@ public abstract class Participante extends Persona {
 
 
     public abstract void preparar();
-
-    public abstract void ccinar();
+    public abstract void ccinar(Plato p);
 
 }

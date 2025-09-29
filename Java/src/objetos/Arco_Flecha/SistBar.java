@@ -1,4 +1,4 @@
-package Arco_Flecha;
+package objetos.Arco_Flecha;
 
 import java.time.LocalDate;
 import java.util.HashMap;

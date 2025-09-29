@@ -11,6 +11,14 @@ public class SistemaTratamientos {
     private HashSet<Pasciente> pascientes;
 
 
+
+    public void agregar(Pasciente p){
+        pascientes.add(p);
+        if (p instanceof Tratamiento){
+            tratamientos.put((Tratamiento) p, LocalDate.now());
+        }
+    }
+
     public void realizarTratamiento() {
         for (Map.Entry<Tratamiento, LocalDate> t : tratamientos.entrySet()) {
             if (t.getKey().tratamiento()) {

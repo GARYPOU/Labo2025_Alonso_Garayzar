@@ -7,8 +7,8 @@ public class Server extends Thread{
     private static final int PUERTO_SERVIDOR = 5000;
     private static final int PUERTO_CLIENTE1 = 6001;
     private static final int PUERTO_CLIENTE2 = 6002;
-    private static final String IP_CLIENTE1 = "192.168.1.11";
-    private static final String IP_CLIENTE2 = "192.168.1.12";
+    private static final String IP_CLIENTE1 = "LocalHost";
+    private static final String IP_CLIENTE2 = "LocalHost";
 
 
     private static final HashMap<Integer, Boolean> ackRecibidos = new HashMap<>();
@@ -27,6 +27,19 @@ public class Server extends Thread{
             ackRecibidos.put(PUERTO_CLIENTE2, false);
             new Thread(() -> manejarCliente(socketServidor, mensaje,IP_CLIENTE1, PUERTO_CLIENTE1)).start();
             new Thread(() -> manejarCliente(socketServidor, mensaje,IP_CLIENTE2, PUERTO_CLIENTE2)).start();
+            //new Thread(new Runnable() {
+                //@Override
+                //public void run() {
+                    //manejarCliente(socketServidor, mensaje, IP_CLIENTE1, PUERTO_CLIENTE1);
+                //}
+            //}).start();
+
+            //new Thread(new Runnable() {
+                //@Override
+                //public void run() {
+                    //manejarCliente(socketServidor, mensaje, IP_CLIENTE2, PUERTO_CLIENTE2);
+                //}
+            //}).start();
             while (!ackRecibidos.get(PUERTO_CLIENTE1) || !ackRecibidos.get(PUERTO_CLIENTE2)) {
                 DatagramPacket respuesta = new DatagramPacket(new byte[1024], 1024);
                 socketServidor.receive(respuesta);
@@ -55,7 +68,7 @@ public class Server extends Thread{
                 DatagramPacket paquete = new DatagramPacket(datos, datos.length, direccion, puertoCliente);
                 socket.send(paquete);
                 System.out.println("Servidor: Mensaje enviado a Cliente en puerto " + puertoCliente);
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             }
         } catch (Exception e) {
             e.printStackTrace();

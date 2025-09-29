@@ -9,6 +9,13 @@ import java.util.Map;
 public class Intermedio extends Participante implements plato_principal{
     private HashMap<Ingredente,Integer>ingrediente_cant;
 
+    public Intermedio(HashMap<Ingredente, Integer> ingrediente_cant) {
+        this.ingrediente_cant = ingrediente_cant;
+    }
+    public Intermedio() {
+        this.ingrediente_cant = new HashMap<>();
+    }
+
     @Override
     public void preparar() {
         String ing=" ";
@@ -22,8 +29,28 @@ public class Intermedio extends Participante implements plato_principal{
     }
 
     @Override
-    public void ccinar() {
+    public void ccinar(Plato p1) {
+        try {
+            int cont = 0;
+            for (Map.Entry<Ingredente, Integer> i : ingrediente_cant.entrySet()) {
+                for (Map.Entry<Ingredente, Integer> i2 : p1.getIngredientes().entrySet()) {
+                    if (i.getKey() == i2.getKey()) {
+                        if (i.getValue() == i2.getValue()) {
+                            cont = cont + 1;
+                        }
+                    }
 
+                }
+            }
+            if (cont == p1.getIngredientes().size()) {
+                System.out.println("Se puede hacer");
+            } else {
+                throw new NoHayIngredientes("No tiene los ingredientes necesarios");
+            }
+        }
+        catch (NoHayIngredientes e){
+            System.out.println(e);
+        }
     }
 
     @Override
