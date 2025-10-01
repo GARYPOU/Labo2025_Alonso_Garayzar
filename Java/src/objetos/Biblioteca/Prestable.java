@@ -1,5 +1,6 @@
-package objetos.biblioteca;
+package objetos.Biblioteca;
 
 public interface Prestable {
-     void devolucion();
+    int multa();
+
 }

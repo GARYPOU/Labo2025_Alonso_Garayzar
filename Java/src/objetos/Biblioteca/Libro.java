@@ -1,4 +1,4 @@
-package objetos.biblioteca;
+package objetos.Biblioteca;
 
 public class Libro extends Publicacion implements Prestable{
     private boolean saga;
@@ -8,7 +8,7 @@ public class Libro extends Publicacion implements Prestable{
     }
 
     @Override
-    public void devolucion() {
-
+    public int multa() {
+        return 7500;
     }
 }

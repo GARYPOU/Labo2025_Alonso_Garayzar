@@ -1,4 +1,4 @@
-package objetos.biblioteca;
+package objetos.Biblioteca;
 
 import personas.Persona;
 

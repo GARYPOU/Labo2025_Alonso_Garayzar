@@ -1,4 +1,4 @@
-package objetos.biblioteca;
+package objetos.Biblioteca;
 
 public abstract class Publicacion {
     private String titulo;
