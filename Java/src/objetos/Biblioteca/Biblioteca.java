@@ -40,7 +40,7 @@ public class Biblioteca {
      public void devolverPrestamo(){
         for (Prestamo p: prestamos){
             if(p.validar()){
-                
+
             }
         }
      }
