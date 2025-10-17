@@ -1,4 +1,4 @@
-package O;
+package P1;
 import java.net.*;
 import java.security.*;
 import java.util.*;
@@ -15,6 +15,21 @@ public class Server {
     // Claves
     private static KeyPair parRSA;
     private static SecretKey claveAES; // compartida
+
+    private static void manejarCliente(DatagramSocket socket, byte[] mensajeCifrado, SocketAddress cliente) {
+        try {
+            while (!ackRecibidos.get(cliente)) {
+                DatagramPacket paquete = new DatagramPacket(mensajeCifrado, mensajeCifrado.length,
+                        ((InetSocketAddress)cliente).getAddress(),
+                        ((InetSocketAddress)cliente).getPort());
+                socket.send(paquete);
+                System.out.println("Servidor: Mensaje cifrado enviado a " + cliente);
+                Thread.sleep(5000);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         try {
@@ -100,19 +115,6 @@ public class Server {
         }
     }
 
-    private static void manejarCliente(DatagramSocket socket, byte[] mensajeCifrado, SocketAddress cliente) {
-        try {
-            while (!ackRecibidos.get(cliente)) {
-                DatagramPacket paquete = new DatagramPacket(mensajeCifrado, mensajeCifrado.length,
-                        ((InetSocketAddress)cliente).getAddress(),
-                        ((InetSocketAddress)cliente).getPort());
-                socket.send(paquete);
-                System.out.println("Servidor: Mensaje cifrado enviado a " + cliente);
-                Thread.sleep(5000);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }
 

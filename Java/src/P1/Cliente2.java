@@ -1,11 +1,10 @@
-package O;
+package P1;
 import java.net.*;
 import java.security.*;
 import javax.crypto.*;
-import javax.crypto.spec.SecretKeySpec;
 import java.util.*;
 
-public class Cliente {
+public class Cliente2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

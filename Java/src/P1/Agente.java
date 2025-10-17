@@ -1,4 +1,4 @@
-package O;
+package P1;
 import java.net.*;
 import java.util.Scanner;
 
