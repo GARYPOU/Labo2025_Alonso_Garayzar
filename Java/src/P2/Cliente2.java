@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
 
-public abstract class Cliente2 {
+public class Cliente2 extends Cliente{
 
 
     public static void registrarCliete(InetAddress direccionServidor, int puertoServidor, DatagramSocket socket) throws IOException {
@@ -53,8 +53,8 @@ public abstract class Cliente2 {
                 String respuesta=ingresarRespuesta();
                 byte[] datosAck = respuesta.getBytes();
                 paqueteRespuesta(datosAck,direccionServidor,puertoServidor,socket);
-                if(respuesta=="ACK") {
-                    break;
+                if(respuesta!="ACK") {
+                    verdad=false;
                 }
             }
         } catch (Exception e) {

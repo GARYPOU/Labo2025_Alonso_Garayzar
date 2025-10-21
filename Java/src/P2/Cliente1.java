@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Scanner;
 
-public abstract class Cliente1 {
+public class Cliente1 extends Cliente{
 
 
     public static void registrarCliete(InetAddress direccionServidor, int puertoServidor, DatagramSocket socket) throws IOException {
