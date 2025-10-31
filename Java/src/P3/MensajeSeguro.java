@@ -28,4 +28,7 @@ public class MensajeSeguro implements Serializable {
 
     // Getters auxiliares si querés debuggear el contenido como string
     public String getMensajeTexto() { return new String(mensajePlano); }
+
+
+
 }

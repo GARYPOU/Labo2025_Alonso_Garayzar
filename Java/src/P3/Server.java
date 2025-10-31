@@ -60,7 +60,7 @@ public class Server {
 
             if (obj instanceof MensajeSeguro) {
                 MensajeSeguro ms = (MensajeSeguro) obj;
-                System.out.println("Server: MensajeSeguro recibido de " + ms.getOrigenId());
+                System.out.println("Server: MensajeSeguro recibido de " );
 
                 // Descifrar clave AES con private key del servidor
                 byte[] claveAesBytes = Encriptador.descifrarRSA(ms.getClaveAesCifrada(), serverPriv);

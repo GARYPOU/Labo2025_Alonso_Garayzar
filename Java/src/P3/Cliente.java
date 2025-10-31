@@ -1,9 +1,9 @@
 package P3;
 
-import p2.crypto.CryptoUtils;
-import p2.crypto.KeyLoader;
-import p2.seguridad.MensajeSeguro;
-import p2.seguridad.AckMessage;
+import P3.Encriptador;
+import P3.KeyLoader;
+import P3.MensajeSeguro;
+import P3.AckMessage;
 
 import javax.crypto.SecretKey;
 import java.io.*;
@@ -55,22 +55,22 @@ public class Cliente {
                 System.out.println(clienteId + ": MensajeSeguro recibido del servidor.");
 
                 // Descifrar la clave AES con la privada del cliente
-                byte[] claveAesBytes = CryptoUtils.descifrarRSA(ms.getClaveAesCifrada(), priv);
-                SecretKey aesKey = CryptoUtils.bytesASecretKey(claveAesBytes);
+                byte[] claveAesBytes = Encriptador.descifrarRSA(ms.getClaveAesCifrada(), priv);
+                SecretKey aesKey = Encriptador.bytesASecretKey(claveAesBytes);
 
                 // Descifrar mensaje AES
-                byte[] mensajeDesc = CryptoUtils.descifrarAES(ms.getMensajeCifrado(), aesKey, ms.getIv());
+                byte[] mensajeDesc = Encriptador.descifrarAES(ms.getMensajeCifrado(), aesKey, ms.getIv());
                 String texto = new String(mensajeDesc, StandardCharsets.UTF_8);
                 System.out.println(clienteId + ": Mensaje descifrado: " + texto);
 
                 // Verificar integridad con hash
-                byte[] hashLocal = CryptoUtils.hashSHA256(mensajeDesc);
+                byte[] hashLocal = Encriptador.hashSHA256(mensajeDesc);
                 boolean integra = java.security.MessageDigest.isEqual(hashLocal, ms.getHashMensaje());
                 System.out.println(clienteId + ": Integridad = " + integra);
 
                 // Construir ACK firmado
                 String ackText = "ACK recibido por " + clienteId;
-                byte[] firma = CryptoUtils.sign(ackText.getBytes(StandardCharsets.UTF_8), priv);
+                byte[] firma = Encriptador.sign(ackText.getBytes(StandardCharsets.UTF_8), priv);
                 AckMessage ack = new AckMessage(ackText, firma, clienteId);
 
                 // Serializar y enviar ACK al servidor (suponemos server en localhost:5555)
