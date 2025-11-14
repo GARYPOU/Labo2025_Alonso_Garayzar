@@ -1,4 +1,4 @@
-package Mensajeria;
+package P8;
 
 import javax.crypto.SecretKey;
 import java.io.*;
@@ -12,18 +12,24 @@ import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
-    private static final HashMap<SocketAddress, PublicKey> clavesPublicasClientes = new HashMap<>();
+
+    private static final ConcurrentHashMap<SocketAddress, PublicKey> clavesPublicasClientes = new ConcurrentHashMap<>();
     private static KeyPair parRSA;
     private static SecretKey claveAES;
     private static boolean agenteRegistrado = false;
     private static SocketAddress agenteAddress = null;
     private static Configuracion config;
+    private static ExecutorService executor = Executors.newCachedThreadPool();
 
     public static void main(String[] args) {
         try {
-            config = new Configuracion("Server.properties");
+            config = new Configuracion(args[0]);
             int puertoServidor = config.getIntProperty("server.port");
             int clientesEsperados = config.getIntProperty("server.expectedClients");
 
@@ -34,8 +40,8 @@ public class Server {
             System.out.println("Servidor iniciado en puerto: " + puertoServidor);
             System.out.println("Esperando " + clientesEsperados + " clientes y 1 agente...");
 
-            ArrayList <SocketAddress> clientes = registrarParticipantes(socketServidor, buffer, clientesEsperados);
-            HashMap<SocketAddress, Boolean> ackRecibidos = new HashMap<>();
+            ArrayList<SocketAddress> clientes = registrarParticipantes(socketServidor, buffer, clientesEsperados);
+            ConcurrentHashMap<SocketAddress, Boolean> ackRecibidos = new ConcurrentHashMap<>();
             for (SocketAddress cliente : clientes) {
                 ackRecibidos.put(cliente, false);
             }
@@ -60,6 +66,7 @@ public class Server {
             }
 
             System.out.println("Proceso completado. Cerrando servidor.");
+            executor.shutdown();
             socketServidor.close();
 
         } catch (Exception e) {
@@ -67,7 +74,7 @@ public class Server {
         }
     }
 
-    public static ArrayList<SocketAddress> registrarParticipantes(DatagramSocket socket, byte[] buffer, int clientesEsperados) throws IOException {
+    public static ArrayList<SocketAddress> registrarParticipantes(DatagramSocket socket, byte[] buffer, int clientesEsperados) throws IOException, ClassNotFoundException {
         ArrayList<SocketAddress> clientes = new ArrayList<>();
 
         while (clientes.size() < clientesEsperados || !agenteRegistrado) {
@@ -162,15 +169,21 @@ public class Server {
 
         byte[] aesBytes = Encriptador.claveAESaBytes(claveAES);
         for (SocketAddress cliente : clientes) {
-            PublicKey pubCliente = clavesPublicasClientes.get(cliente);
-            if (pubCliente != null) {
-                byte[] aesCifrada = Encriptador.cifrarRSA(aesBytes, pubCliente);
-                Paquete aesPacket = new Paquete("CLAVE_AES", aesCifrada, null, "Servidor");
-                enviar(socket, aesPacket, cliente);
-                System.out.println("Clave AES enviada a: " + cliente);
-            } else {
-                System.out.println("No se encontró clave pública para: " + cliente);
-            }
+            executor.execute(() -> {
+                try {
+                    PublicKey pubCliente = clavesPublicasClientes.get(cliente);
+                    if (pubCliente != null) {
+                        byte[] aesCifrada = Encriptador.cifrarRSA(aesBytes, pubCliente);
+                        Paquete aesPacket = new Paquete("CLAVE_AES", aesCifrada, null, "Servidor");
+                        enviar(socket, aesPacket, cliente);
+                        System.out.println("Clave AES enviada a: " + cliente);
+                    } else {
+                        System.out.println("No se encontró clave pública para: " + cliente);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 
@@ -205,23 +218,29 @@ public class Server {
         System.out.println("Enviando mensaje a " + clientes.size() + " clientes...");
 
         for (SocketAddress cliente : clientes) {
-            byte[] iv = Encriptador.generarIV();
-            byte[] cifrado = Encriptador.cifrarAES(mensaje.getBytes(), claveAES, iv);
-            byte[] firma = Encriptador.sign(cifrado, parRSA.getPrivate());
-            Paquete p = new Paquete("MENSAJE", cifrado, iv, "Servidor", firma);
-            enviar(socket, p, cliente);
-            System.out.println("Mensaje firmado y enviado a: " + cliente);
+            executor.execute(() -> {
+                try {
+                    byte[] iv = Encriptador.generarIV();
+                    byte[] cifrado = Encriptador.cifrarAES(mensaje.getBytes(), claveAES, iv);
+                    byte[] firma = Encriptador.sign(cifrado, parRSA.getPrivate());
+                    Paquete p = new Paquete("MENSAJE", cifrado, iv, "Servidor", firma);
+                    enviar(socket, p, cliente);
+                    System.out.println("Mensaje firmado y enviado a: " + cliente);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 
-    public static void esperandoConfirmacionCliente(DatagramSocket socket, ArrayList<SocketAddress> clientes, Map<SocketAddress, Boolean> ackRecibidos) throws Exception {
+    public static void esperandoConfirmacionCliente(DatagramSocket socket, ArrayList<SocketAddress> clientes, ConcurrentHashMap<SocketAddress, Boolean> ackRecibidos) throws Exception {
         System.out.println("Esperando ACKs de " + clientes.size() + " clientes...");
 
+        CountDownLatch latch = new CountDownLatch(clientes.size());
         byte[] buffer = new byte[2048];
         int ackEsperados = clientes.size();
-        int ackRecibidosCount = 0;
 
-        while (ackRecibidosCount < ackEsperados) {
+        while (latch.getCount() > 0) {
             DatagramPacket paquete = new DatagramPacket(buffer, buffer.length);
             socket.receive(paquete);
             Paquete ack = (Paquete) deserializar(paquete.getData());
@@ -234,8 +253,8 @@ public class Server {
 
                     if (firmaValida) {
                         ackRecibidos.put(remitente, true);
-                        ackRecibidosCount++;
-                        System.out.println("ACK firmado válido recibido de " + remitente + " (" + ackRecibidosCount + "/" + ackEsperados + ")");
+                        latch.countDown();
+                        System.out.println("ACK firmado válido recibido de " + remitente + " (" + (ackEsperados - latch.getCount()) + "/" + ackEsperados + ")");
                     } else {
                         System.out.println("ACK con firma inválida de " + remitente);
                     }
@@ -253,21 +272,17 @@ public class Server {
         socket.send(paquete);
     }
 
-    public static byte[] serializar(Object o) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(o);
-        oos.flush();
-        return baos.toByteArray();
+    public static byte[] serializar(Object objeto) throws IOException {
+        ByteArrayOutputStream contenedorBytes = new ByteArrayOutputStream();
+        ObjectOutputStream convertidorABytes = new ObjectOutputStream(contenedorBytes);
+        convertidorABytes.writeObject(objeto);
+        convertidorABytes.flush();
+        return contenedorBytes.toByteArray();
     }
 
-    public static Object deserializar(byte[] datos) throws IOException {
-        try {
-            ByteArrayInputStream bais = new ByteArrayInputStream(datos);
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            return ois.readObject();
-        } catch (Exception e) {
-            throw new IOException("Error al deserializar", e);
-        }
+    public static Object deserializar(byte[] datos) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream lectorDeBytes = new ByteArrayInputStream(datos);
+        ObjectInputStream reconstructorDeObjetos = new ObjectInputStream(lectorDeBytes);
+        return reconstructorDeObjetos.readObject();
     }
 }

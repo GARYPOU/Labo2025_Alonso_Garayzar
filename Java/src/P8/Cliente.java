@@ -1,4 +1,4 @@
-package Mensajeria;
+package P8;
 
 import javax.crypto.SecretKey;
 import java.io.*;
@@ -15,8 +15,10 @@ public abstract class Cliente {
     private static PublicKey pubServidor;
     private static KeyPair parRSA;
     private static Configuracion config;
+    private static volatile boolean procesoCompletado = false;
 
     public static void main(String[] args) {
+        DatagramSocket socket = null;
         try {
             String configFile = "cliente.properties";
             if (args.length > 0) {
@@ -29,18 +31,38 @@ public abstract class Cliente {
 
             parRSA = Encriptador.generarParRSA(2048);
 
-            DatagramSocket socket = new DatagramSocket();
+            socket = new DatagramSocket();
             InetAddress direccionServidor = InetAddress.getByName(serverHost);
 
-            registrarCliente(direccionServidor, serverPort, socket);
-            recibirClavePublica(socket);
-            recibirClaveAES(socket);
-            recibirMensaje(socket);
-            EnviarACK(direccionServidor, serverPort, socket);
+            DatagramSocket finalSocket = socket;
+            Thread clienteThread = new Thread(() -> {
+                try {
+                    registrarCliente(direccionServidor, serverPort, finalSocket);
+                    recibirClavePublica(finalSocket);
+                    recibirClaveAES(finalSocket);
+                    recibirMensaje(finalSocket);
+                    EnviarACK(direccionServidor, serverPort, finalSocket);
+                    Thread.sleep(2000);
+                    procesoCompletado = true;
 
-            socket.close();
+                } catch (Exception e) {
+                    if (!procesoCompletado) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            clienteThread.start();
+            clienteThread.join();
+
+            System.out.println("Proceso del cliente completado. Cerrando...");
+
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (socket != null && !socket.isClosed()) {
+                socket.close();
+            }
         }
     }
 
@@ -114,17 +136,17 @@ public abstract class Cliente {
         socket.send(packet);
     }
 
-    public static byte[] serializar(Object o) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(o);
-        oos.flush();
-        return baos.toByteArray();
+    public static byte[] serializar(Object objeto) throws IOException {
+        ByteArrayOutputStream contenedorBytes = new ByteArrayOutputStream();
+        ObjectOutputStream convertidorABytes = new ObjectOutputStream(contenedorBytes);
+        convertidorABytes.writeObject(objeto);
+        convertidorABytes.flush();
+        return contenedorBytes.toByteArray();
     }
 
-    public static Object deserializar(byte[] data) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream bais = new ByteArrayInputStream(data);
-        ObjectInputStream ois = new ObjectInputStream(bais);
-        return ois.readObject();
+    public static Object deserializar(byte[] datos) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream lectorDeBytes = new ByteArrayInputStream(datos);
+        ObjectInputStream reconstructorDeObjetos = new ObjectInputStream(lectorDeBytes);
+        return reconstructorDeObjetos.readObject();
     }
 }

@@ -1,4 +1,4 @@
-package Mensajeria;
+package P7.Mensajeria;
 
 import javax.crypto.SecretKey;
 import java.io.*;
@@ -19,7 +19,7 @@ public class Agente {
 
     public static void main(String[] args) {
         try {
-            Configuracion config = new Configuracion("agente.properties");
+            Configuracion config = new Configuracion(args[0]);
             String serverHost = config.getProperty("server.host");
             int serverPort = config.getIntProperty("server.port");
 
